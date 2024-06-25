@@ -6,6 +6,7 @@ import Foundation
 protocol ScheduleService: AnyObject {
     func getSchedule(for groupId: Int?, completion: ((Result<[Schedule], Error>) -> Void)?)
     func getGroups(for teacherId: Int?, completion: ((Result<GroupsResponse, Error>) -> Void)?)
+    func getTeachers(completion: ((Result<TeachersResponse, Error>) -> Void)?)
 }
 
 // MARK: - CatalogServiceImpl
@@ -33,6 +34,17 @@ final class ScheduleServiceImpl: ScheduleService {
     
     func getGroups(for teacherId: Int?, completion: ((Result<GroupsResponse, Error>) -> Void)?) {
         networkProvider.mock(ScheduleRequest.getGroups(teacherId: teacherId)) { (result: Result<GroupsResponse, Error>) in
+            switch result {
+            case .success:
+                completion?(result)
+            case let .failure(error):
+                completion?(Result.failure(error))
+            }
+        }
+    }
+    
+    func getTeachers(completion: ((Result<TeachersResponse, Error>) -> Void)?) {
+        networkProvider.mock(ScheduleRequest.getTeachers) { (result: Result<TeachersResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)

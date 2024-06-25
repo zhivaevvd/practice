@@ -23,7 +23,8 @@ enum VCFactory {
                 let profileService = CoreFactory.buildProfileService()
                 vc.setup(with: profileService, dataService: dataService)
             case let vc as CreateScheduleVC:
-                let createScheduleService = CoreFactory.buildCreateScheduleService()
+                print("")
+            //    let createScheduleService = CoreFactory.buildCreateScheduleService()
             //   vc.setup(with: historyService)
             case let vc as ScheduleVC:
                 vc.service = CoreFactory.buildScheduleService()

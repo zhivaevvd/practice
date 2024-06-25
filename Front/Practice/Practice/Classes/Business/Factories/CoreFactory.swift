@@ -18,10 +18,6 @@ enum CoreFactory {
         ScheduleServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
 
-    static func buildCreateScheduleService() -> CreateScheduleService {
-        CreateScheduleServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
-    }
-
     static func buildProfileService() -> ProfileService {
         ProfileServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
