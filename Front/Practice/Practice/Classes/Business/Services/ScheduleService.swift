@@ -33,7 +33,7 @@ final class ScheduleServiceImpl: ScheduleService {
             }
         }
     }
-    
+
     func getGroups(for teacherId: Int?, completion: ((Result<GroupsResponse, Error>) -> Void)?) {
         networkProvider.mock(ScheduleRequest.getGroups(teacherId: teacherId)) { (result: Result<GroupsResponse, Error>) in
             switch result {
@@ -44,7 +44,7 @@ final class ScheduleServiceImpl: ScheduleService {
             }
         }
     }
-    
+
     func getTeachers(completion: ((Result<TeachersResponse, Error>) -> Void)?) {
         networkProvider.mock(ScheduleRequest.getTeachers) { (result: Result<TeachersResponse, Error>) in
             switch result {
@@ -55,7 +55,7 @@ final class ScheduleServiceImpl: ScheduleService {
             }
         }
     }
-    
+
     func getLessons(for teacherId: Int?, completion: ((Result<LessonsResponse, Error>) -> Void)?) {
         networkProvider.mock(ScheduleRequest.getLessons(teacherId: teacherId)) { (result: Result<LessonsResponse, Error>) in
             switch result {
@@ -66,7 +66,7 @@ final class ScheduleServiceImpl: ScheduleService {
             }
         }
     }
-    
+
     func getClasses(completion: ((Result<ClassesResponse, Error>) -> Void)?) {
         networkProvider.mock(ScheduleRequest.classes) { (result: Result<ClassesResponse, Error>) in
             switch result {
