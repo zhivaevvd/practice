@@ -19,12 +19,12 @@ internal enum StoryboardScene {
 
     internal static let auth = SceneType<AuthVC>(storyboard: Auth.self, identifier: "Auth")
   }
-  internal enum History: StoryboardType {
-    internal static let storyboardName = "History"
+  internal enum CreateSchedule: StoryboardType {
+    internal static let storyboardName = "CreateSchedule"
 
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: History.self)
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: CreateSchedule.self)
 
-    internal static let history = SceneType<UIKit.UINavigationController>(storyboard: History.self, identifier: "History")
+    internal static let createSchedule = SceneType<UIKit.UINavigationController>(storyboard: CreateSchedule.self, identifier: "CreateSchedule")
   }
   internal enum Profile: StoryboardType {
     internal static let storyboardName = "Profile"

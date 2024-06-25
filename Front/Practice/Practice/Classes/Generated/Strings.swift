@@ -45,11 +45,6 @@ internal enum L10n {
     internal static let password = L10n.tr("Localizable", "auth.password")
   }
 
-  internal enum Catalog {
-    /// Купить
-    internal static let buy = L10n.tr("Localizable", "catalog.buy")
-  }
-
   internal enum Common {
     /// Поле пустое
     internal static let emptyField = L10n.tr("Localizable", "common.emptyField")
@@ -57,73 +52,9 @@ internal enum L10n {
     internal static let error = L10n.tr("Localizable", "common.error")
   }
 
-  internal enum EditingTitle {
-    /// ИЗМЕНИТЬ
-    internal static let action = L10n.tr("Localizable", "editingTitle.action")
-    /// Другой пол
-    internal static let anotherOccupation = L10n.tr("Localizable", "editingTitle.anotherOccupation")
-    /// Род деятельности не изменился
-    internal static let double = L10n.tr("Localizable", "editingTitle.double")
-    /// Имя
-    internal static let name = L10n.tr("Localizable", "editingTitle.name")
-    /// Пол
-    internal static let occupation = L10n.tr("Localizable", "editingTitle.occupation")
-    /// Настройки
-    internal static let settings = L10n.tr("Localizable", "editingTitle.settings")
-    /// Фамилия
-    internal static let surname = L10n.tr("Localizable", "editingTitle.surname")
-    /// Редактирование профиля
-    internal static let title = L10n.tr("Localizable", "editingTitle.title")
-  }
-
-  internal enum History {
-    /// Завершен
-    internal static let canceled = L10n.tr("Localizable", "history.canceled")
-    /// В работе
-    internal static let inWork = L10n.tr("Localizable", "history.inWork")
-    /// Мои заказы
-    internal static let title = L10n.tr("Localizable", "history.title")
-  }
-
-  internal enum Occupation {
-    /// Мужчина
-    internal static let androidDeveloper = L10n.tr("Localizable", "occupation.androidDeveloper")
-    /// Другое
-    internal static let another = L10n.tr("Localizable", "occupation.another")
-    /// Женщина
-    internal static let iosDeveloper = L10n.tr("Localizable", "occupation.iosDeveloper")
-    /// Ребенок
-    internal static let tester = L10n.tr("Localizable", "occupation.tester")
-  }
-
-  internal enum Order {
-    /// Квартира
-    internal static let apartment = L10n.tr("Localizable", "order.apartment")
-    /// Город, улица, дом
-    internal static let house = L10n.tr("Localizable", "order.house")
-    /// Дата доставки
-    internal static let orderDate = L10n.tr("Localizable", "order.orderDate")
-    /// Купить за 
-    internal static let payTitle = L10n.tr("Localizable", "order.payTitle")
-    /// Оформление заказа
-    internal static let title = L10n.tr("Localizable", "order.title")
-  }
-
-  internal enum Product {
-    /// LiteSummer
-    internal static let badge = L10n.tr("Localizable", "product.badge")
-    /// КУПИТЬ СЕЙЧАС
-    internal static let payTitle = L10n.tr("Localizable", "product.payTitle")
-    /// Размер
-    internal static let size = L10n.tr("Localizable", "product.size")
-    /// L
-    internal static let sizeL = L10n.tr("Localizable", "product.sizeL")
-    /// M
-    internal static let sizeM = L10n.tr("Localizable", "product.sizeM")
-    /// S
-    internal static let sizeS = L10n.tr("Localizable", "product.sizeS")
-    /// XL
-    internal static let sizeXL = L10n.tr("Localizable", "product.sizeXL")
+  internal enum CreateSchedule {
+    /// Составить расписание
+    internal static let title = L10n.tr("Localizable", "createSchedule.title")
   }
 
   internal enum Profile {

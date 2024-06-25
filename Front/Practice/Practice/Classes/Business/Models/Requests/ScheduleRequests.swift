@@ -28,8 +28,6 @@ enum ScheduleRequest: Request {
             }
 
             return data
-        default:
-            return nil
         }
     }
 }
