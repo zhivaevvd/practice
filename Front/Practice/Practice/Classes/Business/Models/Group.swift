@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Group: Decodable, Hashable {
-    public let id: Int
-    public let number: String
+struct Group: Decodable, Hashable {
+    let id: Int
+    let number: String
 }

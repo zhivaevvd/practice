@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct Teacher: Decodable, Hashable {
-    public let id: Int
-    public let name: String
-    public let surname: String
+struct Teacher: Decodable, Hashable {
+    let id: Int
+    let name: String
+    let surname: String
 }

@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct Schedule: Decodable, Hashable {
-    public let lessonId: Int
-    public let lessonName: String
-    public let date: Date
-    public let teacher: Teacher
-    public let group: Group
-    public let `class`: Class
-    public let scheduleId: Int
-    public let pairNumber: Int
+struct Schedule: Decodable, Hashable {
+    let lessonId: Int
+    let lessonName: String
+    let date: Date
+    let teacher: Teacher
+    let group: Group
+    let `class`: Class
+    let scheduleId: Int
+    let pairNumber: Int
 }

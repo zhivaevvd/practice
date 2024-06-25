@@ -23,6 +23,8 @@
 		14C2CD022C2B1B8A00211BDD /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CD012C2B1B8A00211BDD /* Lesson.swift */; };
 		14C2CD042C2B1BFF00211BDD /* LessonsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CD032C2B1BFF00211BDD /* LessonsResponse.swift */; };
 		14C2CD062C2B1C3600211BDD /* lessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C2CD052C2B1C3600211BDD /* lessons.json */; };
+		14C2CD082C2B1D8500211BDD /* ClassesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CD072C2B1D8500211BDD /* ClassesResponse.swift */; };
+		14C2CD0A2C2B1DE500211BDD /* classes.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C2CD092C2B1DE500211BDD /* classes.json */; };
 		5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74DFAD2DCF610F9DC7903D /* InputField.swift */; };
 		B508A85E283F88130081CE95 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B508A85D283F88130081CE95 /* Storyboard.storyboard */; };
 		B5A21BF42733E4DD00614B22 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A21BF32733E4DD00614B22 /* ProfileView.xib */; };
@@ -116,6 +118,8 @@
 		14C2CD012C2B1B8A00211BDD /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		14C2CD032C2B1BFF00211BDD /* LessonsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsResponse.swift; sourceTree = "<group>"; };
 		14C2CD052C2B1C3600211BDD /* lessons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lessons.json; sourceTree = "<group>"; };
+		14C2CD072C2B1D8500211BDD /* ClassesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesResponse.swift; sourceTree = "<group>"; };
+		14C2CD092C2B1DE500211BDD /* classes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = classes.json; sourceTree = "<group>"; };
 		5E74DFAD2DCF610F9DC7903D /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		B508A85D283F88130081CE95 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		B5A21BF32733E4DD00614B22 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
@@ -496,6 +500,7 @@
 				14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */,
 				14C2CCFF2C2B19EF00211BDD /* TeachersResponse.swift */,
 				14C2CD032C2B1BFF00211BDD /* LessonsResponse.swift */,
+				14C2CD072C2B1D8500211BDD /* ClassesResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				14C2CCF92C2B17A300211BDD /* groups.json */,
 				14C2CCFD2C2B198500211BDD /* teachers.json */,
 				14C2CD052C2B1C3600211BDD /* lessons.json */,
+				14C2CD092C2B1DE500211BDD /* classes.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -611,6 +617,7 @@
 				B508A85E283F88130081CE95 /* Storyboard.storyboard in Resources */,
 				C2B96D64270DE9D90012D0E8 /* userBRerror.json in Resources */,
 				C2B96D63270DE9D90012D0E8 /* getProfile.json in Resources */,
+				14C2CD0A2C2B1DE500211BDD /* classes.json in Resources */,
 				145ECD222C2AC1C900D0F8B3 /* schedule.json in Resources */,
 				C21E134227045B4900867E2E /* Localizable.stringsdict in Resources */,
 				C21E13672704674D00867E2E /* CreateSchedule.storyboard in Resources */,
@@ -722,6 +729,7 @@
 				C2D720A22704869900C40EA5 /* UserRequest.swift in Sources */,
 				C2B96D43270DD9A50012D0E8 /* SnackCustomView.swift in Sources */,
 				B5B1547F2730087C00C92082 /* UIPanGestureRecognizer+Direction.swift in Sources */,
+				14C2CD082C2B1D8500211BDD /* ClassesResponse.swift in Sources */,
 				5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */,
 				145D72212C2ACA25005CAC92 /* UIStackView+Extensions.swift in Sources */,
 				C2B96D4B270DE0A00012D0E8 /* FieldError.swift in Sources */,
