@@ -19,16 +19,12 @@ enum VCFactory {
             nvc.navigationBar.prefersLargeTitles = true
             switch rootVC {
             case let vc as ProfileVC:
-
                 let dataService = CoreFactory.dataService
                 let profileService = CoreFactory.buildProfileService()
-                // let snacker = CoreFactory.snacker
                 vc.setup(with: profileService, dataService: dataService)
-
             case let vc as HistoryVC:
                 let historyService = CoreFactory.buildHistoryService()
                 vc.setup(with: historyService)
-
             case let vc as ScheduleVC:
                 vc.service = CoreFactory.buildScheduleService()
                 vc.snacker = CoreFactory.snacker
@@ -36,6 +32,9 @@ enum VCFactory {
                 break
             }
         }
+
+        tabBarVC.dataService = CoreFactory.dataService
+
         return tabBarVC
     }
 
@@ -58,15 +57,6 @@ enum VCFactory {
         let parameters = BottomSheetParameters(contentView: contentView, onEveryTapOut: onEveryTapOut)
         let vc = BottomSheetController(arguments: parameters)
         vc.transitioningDelegate = vc
-        return vc
-    }
-
-    static func buildEtidPage(with profile: Profile) -> UIViewController {
-        let vc = EditProfileVC()
-        vc.profile = profile
-        let profileService = CoreFactory.buildProfileService()
-        let snacker = CoreFactory.snacker
-        vc.setup(with: profileService, snacker)
         return vc
     }
 }

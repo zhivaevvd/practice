@@ -26,9 +26,7 @@
 		B570C6282721C59A00994071 /* HistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570C6272721C59A00994071 /* HistoryResponse.swift */; };
 		B5A21BF42733E4DD00614B22 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A21BF32733E4DD00614B22 /* ProfileView.xib */; };
 		B5A21BF62733E78000614B22 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A21BF52733E78000614B22 /* ProfileView.swift */; };
-		B5A21BFC273588C700614B22 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A21BFB273588C700614B22 /* User.swift */; };
 		B5A21BFE273595D300614B22 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A21BFD273595D300614B22 /* ProfileService.swift */; };
-		B5A21C202736BB8C00614B22 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A21C1F2736BB8C00614B22 /* EditProfileVC.swift */; };
 		B5A21C222738000300614B22 /* deleteOrder.json in Resources */ = {isa = PBXBuildFile; fileRef = B5A21C212738000300614B22 /* deleteOrder.json */; };
 		B5A21C242738005B00614B22 /* DeleteOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A21C232738005B00614B22 /* DeleteOrder.swift */; };
 		B5A7BBEE2842474600B2D70D /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A7BBED2842474600B2D70D /* Empty.xib */; };
@@ -151,9 +149,7 @@
 		B570C6272721C59A00994071 /* HistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryResponse.swift; sourceTree = "<group>"; };
 		B5A21BF32733E4DD00614B22 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		B5A21BF52733E78000614B22 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		B5A21BFB273588C700614B22 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B5A21BFD273595D300614B22 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
-		B5A21C1F2736BB8C00614B22 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		B5A21C212738000300614B22 /* deleteOrder.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = deleteOrder.json; sourceTree = "<group>"; };
 		B5A21C232738005B00614B22 /* DeleteOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteOrder.swift; sourceTree = "<group>"; };
 		B5A7BBED2842474600B2D70D /* Empty.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
@@ -279,14 +275,6 @@
 			path = Order;
 			sourceTree = "<group>";
 		};
-		B5A21C062735C1FE00614B22 /* EditProfile */ = {
-			isa = PBXGroup;
-			children = (
-				B5A21C1F2736BB8C00614B22 /* EditProfileVC.swift */,
-			);
-			path = EditProfile;
-			sourceTree = "<group>";
-		};
 		B5B154742730079300C92082 /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,7 +350,6 @@
 		C21E133427045A3F00867E2E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B5A21C062735C1FE00614B22 /* EditProfile */,
 				B564101A27257BED0008758A /* Order */,
 				C2CD31AA27203DD5001A32C3 /* Product */,
 				C21E134727045BAF00867E2E /* Profile */,
@@ -510,7 +497,6 @@
 				C2CD31992720281B001A32C3 /* Empty.swift */,
 				C2CD319B2720284E001A32C3 /* Order.swift */,
 				C2CD319D272028B5001A32C3 /* OrderStatus.swift */,
-				B5A21BFB273588C700614B22 /* User.swift */,
 				145ECD192C2AC03E00D0F8B3 /* Schedule.swift */,
 				145ECD1B2C2AC07200D0F8B3 /* Teacher.swift */,
 				145ECD1D2C2AC0A800D0F8B3 /* Group.swift */,
@@ -827,14 +813,12 @@
 				C2D720A727048AF000C40EA5 /* AuthResponse.swift in Sources */,
 				C27E0F1D270473A20015530B /* Plist.swift in Sources */,
 				C21E13512704604400867E2E /* AppState.swift in Sources */,
-				B5A21C202736BB8C00614B22 /* EditProfileVC.swift in Sources */,
 				B564101E27257C2C0008758A /* OrderVC.swift in Sources */,
 				C2D720A427048AAF00C40EA5 /* DataResponse.swift in Sources */,
 				C239CB6E27205ABE003ABBB0 /* LoaderParameters+Default.swift in Sources */,
 				C239CB6B27205AA6003ABBB0 /* UILoadable.swift in Sources */,
 				C27E0F1E270473A20015530B /* Assets.swift in Sources */,
 				C2B96D49270DDE6F0012D0E8 /* ErrorResponse.swift in Sources */,
-				B5A21BFC273588C700614B22 /* User.swift in Sources */,
 				C2B96D41270DD9770012D0E8 /* SnackerStyle.swift in Sources */,
 				145ECD242C2AC4AE00D0F8B3 /* ScheduleCell.swift in Sources */,
 				B570C6282721C59A00994071 /* HistoryResponse.swift in Sources */,

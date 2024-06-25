@@ -1,18 +1,24 @@
 
 import Foundation
+
 protocol ProfileService: AnyObject {
     func getProfile(completion: ((Result<Profile, Error>) -> Void)?)
-    func userChange(profile: Profile, completion: ((Result<Void, Error>) -> Void)?)
 }
 
 final class ProfileServiceImpl: ProfileService {
+    
+    init(networkProvider: NetworkProvider, dataService: DataService) {
+        self.networkProvider = networkProvider
+        self.dataService = dataService
+    }
+    
     func getProfile(completion: ((Result<Profile, Error>) -> Void)?) {
-        guard let userId = Int(dataService.appState.accessToken ?? "") else {
-            return
-        }
-
-        networkProvider.make(
-            UserRequest.getProfile(id: userId),
+//        guard let userId = Int(dataService.appState.accessToken ?? "") else {
+//            return
+//        }
+//        
+        networkProvider.mock(
+            UserRequest.getProfile(id: 1),
             completion: { (result: Result<Profile, Error>) in
                 switch result {
                 case let .success(data):
@@ -25,28 +31,7 @@ final class ProfileServiceImpl: ProfileService {
         )
     }
 
-    func userChange(profile: Profile, completion: ((Result<Void, Error>) -> Void)?) {
-        networkProvider.make(
-            UserRequest.userChange(profile: profile),
-            completion: { (result: Result<Bool, Error>) in
-                switch result {
-                case .success:
-                    completion?(Result.success(()))
-                case let .failure(error):
-                    completion?(Result.failure(error))
-                }
-            },
-            keyDecodingStrategy: .useDefaultKeys
-        )
-    }
-
-    typealias UserChange = DataResponse<Profile>
-
-    init(networkProvider: NetworkProvider, dataService: DataService) {
-        self.networkProvider = networkProvider
-        self.dataService = dataService
-    }
-
     private let networkProvider: NetworkProvider
+
     private let dataService: DataService
 }

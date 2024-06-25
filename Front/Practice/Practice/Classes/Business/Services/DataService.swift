@@ -34,6 +34,7 @@ final class DataServiceImpl: DataService {
 
     private enum Keys: String {
         case accessToken
+        case user
     }
 
     private let keychain: Keychain

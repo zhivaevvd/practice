@@ -5,7 +5,6 @@ import Foundation
 enum UserRequest: Request {
     case login(user: String, password: String)
     case getProfile(id: Int)
-    case userChange(profile: Profile)
 
     // MARK: Internal
 
@@ -15,8 +14,6 @@ enum UserRequest: Request {
             return "login/\(user)&\(password)"
         case let .getProfile(id: id):
             return "person/\(id)"
-        case let .userChange(person):
-            return "person/\(person.id)"
         }
     }
 
@@ -26,21 +23,25 @@ enum UserRequest: Request {
             return .get
         case .getProfile:
             return .get
-        case .userChange:
-            return .put
         }
     }
 
     var body: Data? {
-        switch self {
-        case let .userChange(profile):
-            return RequestBuilderImpl.encode(profile)
-        default:
-            return nil
-        }
+        nil
     }
 
     var mock: Data? {
-        nil
+        switch self {
+        case .getProfile:
+            guard let path = Bundle.main.path(forResource: "getProfile", ofType: "json"),
+                  let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+            else {
+                return nil
+            }
+            
+            return data
+        default:
+            return nil
+        }
     }
 }
