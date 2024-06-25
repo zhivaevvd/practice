@@ -3,7 +3,8 @@ import Foundation
 
 // MARK: - HistoryService
 
-protocol CreateScheduleService: AnyObject {}
+protocol CreateScheduleService: AnyObject {
+}
 
 // MARK: - CatalogServiceImpl
 

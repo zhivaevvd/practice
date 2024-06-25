@@ -16,6 +16,8 @@
 		145ECD202C2AC0DA00D0F8B3 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145ECD1F2C2AC0DA00D0F8B3 /* Class.swift */; };
 		145ECD222C2AC1C900D0F8B3 /* schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 145ECD212C2AC1C900D0F8B3 /* schedule.json */; };
 		145ECD242C2AC4AE00D0F8B3 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145ECD232C2AC4AE00D0F8B3 /* ScheduleCell.swift */; };
+		14C2CCFA2C2B17A300211BDD /* groups.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C2CCF92C2B17A300211BDD /* groups.json */; };
+		14C2CCFC2C2B188200211BDD /* GroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */; };
 		5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74DFAD2DCF610F9DC7903D /* InputField.swift */; };
 		B508A85E283F88130081CE95 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B508A85D283F88130081CE95 /* Storyboard.storyboard */; };
 		B570C6262721C2B600994071 /* CreateScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570C6252721C2B600994071 /* CreateScheduleService.swift */; };
@@ -103,6 +105,8 @@
 		145ECD1F2C2AC0DA00D0F8B3 /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		145ECD212C2AC1C900D0F8B3 /* schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schedule.json; sourceTree = "<group>"; };
 		145ECD232C2AC4AE00D0F8B3 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		14C2CCF92C2B17A300211BDD /* groups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = groups.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
 		5E74DFAD2DCF610F9DC7903D /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		B508A85D283F88130081CE95 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		B570C6252721C2B600994071 /* CreateScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleService.swift; sourceTree = "<group>"; };
@@ -481,6 +485,7 @@
 				C2D720A327048AAF00C40EA5 /* DataResponse.swift */,
 				C2D720A627048AF000C40EA5 /* AuthResponse.swift */,
 				C2B96D48270DDE6F0012D0E8 /* ErrorResponse.swift */,
+				14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 				C2B96D57270DE9D80012D0E8 /* userBRerror.json */,
 				C2B96D4E270DE9D80012D0E8 /* userUEerror.json */,
 				145ECD212C2AC1C900D0F8B3 /* schedule.json */,
+				14C2CCF92C2B17A300211BDD /* groups.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				C2CD31A727202FE6001A32C3 /* en.lproj in Resources */,
 				C21E13292704510E00867E2E /* Assets.xcassets in Resources */,
 				C21E13652704671A00867E2E /* Schedule.storyboard in Resources */,
+				14C2CCFA2C2B17A300211BDD /* groups.json in Resources */,
 				C21E133E27045B1900867E2E /* InfoPlist.strings in Resources */,
 				C21E134D27045C8A00867E2E /* TabBar.storyboard in Resources */,
 				C2B96D66270DE9D90012D0E8 /* detailsInfo.json in Resources */,
@@ -677,6 +684,7 @@
 				C21E135D270464FF00867E2E /* Request.swift in Sources */,
 				C27E0F242704759D0015530B /* ProfileVC.swift in Sources */,
 				C2B96D68270DEAA60012D0E8 /* ScheduleRequests.swift in Sources */,
+				14C2CCFC2C2B188200211BDD /* GroupsResponse.swift in Sources */,
 				C2B96D45270DDA820012D0E8 /* Snacker.swift in Sources */,
 				C239CB6927205AA6003ABBB0 /* LoaderView.swift in Sources */,
 				C21E1353270460AE00867E2E /* DataService.swift in Sources */,
