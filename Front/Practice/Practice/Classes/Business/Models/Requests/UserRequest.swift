@@ -38,7 +38,7 @@ enum UserRequest: Request {
             else {
                 return nil
             }
-            
+
             return data
         default:
             return nil

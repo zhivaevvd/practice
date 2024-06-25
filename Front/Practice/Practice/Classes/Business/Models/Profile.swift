@@ -5,11 +5,11 @@ struct ProfileType: Codable, RawRepresentable, Hashable, Equatable {
     init(rawValue: String) {
         self.rawValue = rawValue
     }
-    
+
     static let admin: ProfileType = .init(rawValue: "admin")
     static let student: ProfileType = .init(rawValue: "student")
     static let teacher: ProfileType = .init(rawValue: "teacher")
-    
+
     let rawValue: String
 }
 

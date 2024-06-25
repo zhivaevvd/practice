@@ -9,6 +9,6 @@ struct AppState {
     }
 
     var userId: String?
-    
+
     var user: Profile?
 }

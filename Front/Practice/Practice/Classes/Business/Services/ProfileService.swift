@@ -6,17 +6,16 @@ protocol ProfileService: AnyObject {
 }
 
 final class ProfileServiceImpl: ProfileService {
-    
     init(networkProvider: NetworkProvider, dataService: DataService) {
         self.networkProvider = networkProvider
         self.dataService = dataService
     }
-    
+
     func getProfile(completion: ((Result<Profile, Error>) -> Void)?) {
 //        guard let userId = Int(dataService.appState.accessToken ?? "") else {
 //            return
 //        }
-//        
+//
         networkProvider.mock(
             UserRequest.getProfile(id: 1),
             completion: { (result: Result<Profile, Error>) in

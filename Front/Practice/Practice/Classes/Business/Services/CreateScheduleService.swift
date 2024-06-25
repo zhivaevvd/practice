@@ -3,14 +3,11 @@ import Foundation
 
 // MARK: - HistoryService
 
-protocol CreateScheduleService: AnyObject {
-
-}
+protocol CreateScheduleService: AnyObject {}
 
 // MARK: - CatalogServiceImpl
 
 final class CreateScheduleServiceImpl: CreateScheduleService {
-
     // MARK: Lifecycle
 
     init(networkProvider: NetworkProvider, dataService: DataService) {

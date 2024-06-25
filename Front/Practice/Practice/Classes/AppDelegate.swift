@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        //let initialVC: UIViewController? = dataService.appState.isUserAuthenticated ? VCFactory.buildTabBarVC() : VCFactory.buildAuthVC()
-        
+        // let initialVC: UIViewController? = dataService.appState.isUserAuthenticated ? VCFactory.buildTabBarVC() : VCFactory.buildAuthVC()
+
         var initialVC: UIViewController?
         if dataService.appState.isUserAuthenticated {
             requestProfile()
@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             initialVC = VCFactory.buildAuthVC()
         }
-    
+
         requestProfile()
-        
+
         window?.rootViewController = VCFactory.buildTabBarVC()
         window?.makeKeyAndVisible()
         configureNavigationBar()
@@ -34,9 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Private
 
     private let dataService: DataService = CoreFactory.dataService
-    
+
     private let profileService: ProfileService = CoreFactory.buildProfileService()
-    
+
     private func requestProfile() {
         profileService.getProfile { [weak self] result in
             switch result {
