@@ -6,6 +6,7 @@ enum ScheduleRequest: Request {
     case getSchedule(groupId: Int?)
     case getGroups(teacherId: Int?)
     case getTeachers
+    case getLessons(teacherId: Int?)
 
     // MARK: Internal
 
@@ -23,6 +24,11 @@ enum ScheduleRequest: Request {
             return "groups"
         case .getTeachers:
             return "teachers"
+        case let .getLessons(teacherId):
+            if let teacherId = teacherId {
+                return "lessons/\(String(teacherId))"
+            }
+            return "lessons"
         }
     }
 
@@ -48,6 +54,13 @@ enum ScheduleRequest: Request {
             return data
         case .getTeachers:
             guard let path = Bundle.main.path(forResource: "teachers", ofType: "json"),
+                  let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+            else {
+                return nil
+            }
+            return data
+        case .getLessons:
+            guard let path = Bundle.main.path(forResource: "lessons", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
             else {
                 return nil

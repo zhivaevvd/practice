@@ -20,6 +20,9 @@
 		14C2CCFC2C2B188200211BDD /* GroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */; };
 		14C2CCFE2C2B198500211BDD /* teachers.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C2CCFD2C2B198500211BDD /* teachers.json */; };
 		14C2CD002C2B19EF00211BDD /* TeachersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CCFF2C2B19EF00211BDD /* TeachersResponse.swift */; };
+		14C2CD022C2B1B8A00211BDD /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CD012C2B1B8A00211BDD /* Lesson.swift */; };
+		14C2CD042C2B1BFF00211BDD /* LessonsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CD032C2B1BFF00211BDD /* LessonsResponse.swift */; };
+		14C2CD062C2B1C3600211BDD /* lessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C2CD052C2B1C3600211BDD /* lessons.json */; };
 		5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74DFAD2DCF610F9DC7903D /* InputField.swift */; };
 		B508A85E283F88130081CE95 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B508A85D283F88130081CE95 /* Storyboard.storyboard */; };
 		B5A21BF42733E4DD00614B22 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A21BF32733E4DD00614B22 /* ProfileView.xib */; };
@@ -110,6 +113,9 @@
 		14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
 		14C2CCFD2C2B198500211BDD /* teachers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teachers.json; sourceTree = "<group>"; };
 		14C2CCFF2C2B19EF00211BDD /* TeachersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachersResponse.swift; sourceTree = "<group>"; };
+		14C2CD012C2B1B8A00211BDD /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		14C2CD032C2B1BFF00211BDD /* LessonsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsResponse.swift; sourceTree = "<group>"; };
+		14C2CD052C2B1C3600211BDD /* lessons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lessons.json; sourceTree = "<group>"; };
 		5E74DFAD2DCF610F9DC7903D /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		B508A85D283F88130081CE95 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		B5A21BF32733E4DD00614B22 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
@@ -417,6 +423,7 @@
 				145ECD1B2C2AC07200D0F8B3 /* Teacher.swift */,
 				145ECD1D2C2AC0A800D0F8B3 /* Group.swift */,
 				145ECD1F2C2AC0DA00D0F8B3 /* Class.swift */,
+				14C2CD012C2B1B8A00211BDD /* Lesson.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -488,6 +495,7 @@
 				C2B96D48270DDE6F0012D0E8 /* ErrorResponse.swift */,
 				14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */,
 				14C2CCFF2C2B19EF00211BDD /* TeachersResponse.swift */,
+				14C2CD032C2B1BFF00211BDD /* LessonsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -504,6 +512,7 @@
 				145ECD212C2AC1C900D0F8B3 /* schedule.json */,
 				14C2CCF92C2B17A300211BDD /* groups.json */,
 				14C2CCFD2C2B198500211BDD /* teachers.json */,
+				14C2CD052C2B1C3600211BDD /* lessons.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -593,6 +602,7 @@
 				C21E133927045ADA00867E2E /* Localizable.strings in Resources */,
 				C2CD31A727202FE6001A32C3 /* en.lproj in Resources */,
 				C21E13292704510E00867E2E /* Assets.xcassets in Resources */,
+				14C2CD062C2B1C3600211BDD /* lessons.json in Resources */,
 				C21E13652704671A00867E2E /* Schedule.storyboard in Resources */,
 				14C2CCFA2C2B17A300211BDD /* groups.json in Resources */,
 				C21E133E27045B1900867E2E /* InfoPlist.strings in Resources */,
@@ -684,6 +694,7 @@
 				145ECD202C2AC0DA00D0F8B3 /* Class.swift in Sources */,
 				C21E13632704661500867E2E /* VCFactory.swift in Sources */,
 				C2151F52271885F3009036CB /* ScheduleService.swift in Sources */,
+				14C2CD042C2B1BFF00211BDD /* LessonsResponse.swift in Sources */,
 				B5B154832730089F00C92082 /* BottomSheetParametersProtocol.swift in Sources */,
 				C21E135D270464FF00867E2E /* Request.swift in Sources */,
 				C27E0F242704759D0015530B /* ProfileVC.swift in Sources */,
@@ -694,6 +705,7 @@
 				C21E1353270460AE00867E2E /* DataService.swift in Sources */,
 				145D72232C2AD30C005CAC92 /* PairView.swift in Sources */,
 				B5B15485273008B900C92082 /* BottomSheetController.swift in Sources */,
+				14C2CD022C2B1B8A00211BDD /* Lesson.swift in Sources */,
 				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
 				C239CB6827205AA6003ABBB0 /* UILoadable+UIView.swift in Sources */,
