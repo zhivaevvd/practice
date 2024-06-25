@@ -106,7 +106,7 @@ class EditProfileVC: UIViewController, UIGestureRecognizerDelegate {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .white
         image.contentMode = .scaleAspectFill
-        image.layer.masksToBounds = true    
+        image.layer.masksToBounds = true
         image.height(90).width(90)
         image.layer.cornerRadius = 90 / 2
 

@@ -3,7 +3,6 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     // MARK: Internal
 
     var window: UIWindow?

@@ -1,5 +1,5 @@
-input_dir: SchoolStore/Resources/
-output_dir: SchoolStore/Classes/Generated
+input_dir: Practice/Resources/
+output_dir: Practice/Classes/Generated
 strings:
     inputs:
         - Localizable/ru.lproj/Localizable.strings
