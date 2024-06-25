@@ -1,10 +1,8 @@
 {
-    "data": {
-        "profile": {
-            "name": "Анна",
-            "surname": "Виноградова",
-            "occupation": "Женщина",
-            "avatarUrl": "https://i3.photo.2gis.com/images/branch/7/985162460500797_e5df.jpg"
-        }
-    }
+    "id": 1,
+    "authId": 1,
+    "name": "Владислав",
+    "surname": "Живаев",
+    "type": "admin",
+    "avatarUrl": "https://i3.photo.2gis.com/images/branch/7/985162460500797_e5df.jpg"
 }
