@@ -21,7 +21,7 @@ homebrew:
 
 ## fmt: Launch swift files code formatter
 fmt:
-	mint run swiftformat swiftformat SchoolStore --quiet --conflictmarkers ignore
+	mint run swiftformat swiftformat Practice --quiet --conflictmarkers ignore
 
 ## lint: Launch swift files linter check
 lint:

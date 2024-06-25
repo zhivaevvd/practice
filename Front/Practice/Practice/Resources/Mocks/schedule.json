@@ -1,0 +1,102 @@
+[
+    {
+         "lessonId": 1,
+         "lessonName": "Функциональный анализ",
+         "date": "2024-06-26",
+         "teacher": {
+             "id": 1,
+             "name": "Дмитрий",
+             "surname": "Перепелкин"
+         },
+         "group": {
+             "id": 1,
+             "number": "102М"
+         },
+         "class": {
+             "id": 1,
+             "number": "413"
+         },
+         "scheduleId": 1,
+         "pairNumber": 2
+     },
+    {
+         "lessonId": 1,
+         "lessonName": "ТФКП",
+         "date": "2024-06-27",
+         "teacher": {
+             "id": 2,
+             "name": "Максим",
+             "surname": "Гурьянов"
+         },
+         "group": {
+             "id": 2,
+             "number": "202"
+         },
+         "class": {
+             "id": 2,
+             "number": "401"
+         },
+         "scheduleId": 3,
+         "pairNumber": 1
+     },
+    {
+         "lessonId": 1,
+         "lessonName": "Математический анализ",
+         "date": "2024-06-27",
+         "teacher": {
+             "id": 4,
+             "name": "Олег",
+             "surname": "Костров"
+         },
+         "group": {
+             "id": 1,
+             "number": "102"
+         },
+         "class": {
+             "id": 2,
+             "number": "218"
+         },
+         "scheduleId": 4,
+         "pairNumber": 2
+     },
+    {
+         "lessonId": 1,
+         "lessonName": "Английский язык",
+         "date": "2024-06-27",
+         "teacher": {
+             "id": 2,
+             "name": "Ольга",
+             "surname": "Рубцова"
+         },
+         "group": {
+             "id": 1,
+             "number": "102"
+         },
+         "class": {
+             "id": 2,
+             "number": "201"
+         },
+         "scheduleId": 5,
+         "pairNumber": 3
+     },
+    {
+         "lessonId": 1,
+         "lessonName": "Английский язык",
+         "date": "2024-06-28",
+         "teacher": {
+             "id": 2,
+             "name": "Ольга",
+             "surname": "Рубцова"
+         },
+         "group": {
+             "id": 1,
+             "number": "402М"
+         },
+         "class": {
+             "id": 2,
+             "number": "205"
+         },
+         "scheduleId": 6,
+         "pairNumber": 4
+     }
+]

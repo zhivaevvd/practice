@@ -4,8 +4,7 @@ import Foundation
 // MARK: - CatalogService
 
 protocol ScheduleService: AnyObject {
-    func getCatalogItems(with offset: Int, limit: Int, completion: ((Result<[Product], Error>) -> Void)?)
-    func getProduct(with id: Int, completion: ((Result<Product, Error>) -> Void)?)
+    func getSchedule(for groupId: Int?, completion: ((Result<[Schedule], Error>) -> Void)?)
 }
 
 // MARK: - CatalogServiceImpl
@@ -20,23 +19,8 @@ final class ScheduleServiceImpl: ScheduleService {
 
     // MARK: Internal
 
-    func getCatalogItems(with offset: Int, limit: Int, completion: ((Result<[Product], Error>) -> Void)?) {
-        networkProvider.make(
-            CatalogRequest.listOfProducts(offset: offset, limit: limit)
-        ) { (result: Result<[Product], Error>) in
-            switch result {
-            case .success:
-                completion?(result)
-            case let .failure(error):
-                completion?(Result.failure(error))
-            }
-        }
-    }
-
-    func getProduct(with id: Int, completion: ((Result<Product, Error>) -> Void)?) {
-        networkProvider.make(
-            CatalogRequest.detailInfo(id: id)
-        ) { (result: Result<Product, Error>) in
+    func getSchedule(for groupId: Int?, completion: ((Result<[Schedule], Error>) -> Void)?) {
+        networkProvider.mock(ScheduleRequest.getSchedule(groupId: groupId)) { (result: Result<[Schedule], Error>) in
             switch result {
             case .success:
                 completion?(result)

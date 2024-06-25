@@ -1,6 +1,7 @@
 
 import AutoLayoutSugar
 import Foundation
+import OrderedDictionary
 import UIKit
 
 // MARK: - CatalogVC
@@ -10,59 +11,61 @@ final class ScheduleVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = L10n.Catalog.title
+        title = L10n.Schedule.title
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
         configTableView()
-        service?.getCatalogItems(with: 0, limit: 20, completion: { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            switch result {
-            case let .success(products):
-                self.items = products
-            case .failure:
-                break
-            }
-        })
+        getSchedule()
     }
 
     // MARK: Internal
 
-    static let productCellReuseId: String = ProductCell.description()
+    static let scheduleCellReuseId: String = ScheduleCell.description()
 
     var service: ScheduleService?
 
     var snacker: Snacker?
 
-    var items: [Product] = [] {
+    var items: [Schedule] = [] {
         didSet {
-            snapshot(Array(items))
+            snapshot(groupItemsByDate(items))
         }
     }
 
+    func groupItemsByDate(_ items: [Schedule]) -> [[Schedule]] {
+        var groupedItems: OrderedDictionary<Date, [Schedule]> = [:]
+
+        items.forEach { item in
+            if groupedItems[item.date] != nil {
+                groupedItems[item.date]?.append(item)
+            } else {
+                groupedItems[item.date] = [item]
+            }
+        }
+
+        groupedItems.sort(by: { $0.key < $1.key })
+
+        return Array(groupedItems.orderedValues)
+    }
+
     func configTableView() {
-        dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, Product>(
+        dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, [Schedule]>(
             tableView: tableView,
             cellProvider: { tableView, indexPath, model -> UITableViewCell? in
                 guard let cell = tableView.dequeueReusableCell(
-                    withIdentifier: Self.productCellReuseId,
+                    withIdentifier: Self.scheduleCellReuseId,
                     for: indexPath
-                ) as? ProductCell else {
+                ) as? ScheduleCell else {
                     return nil
                 }
                 cell.model = model
-                cell.buyHandler = { product in
-                    debugPrint("Buy \(product.id)")
-                    self.navigationController?.pushViewController(VCFactory.buildOrderVC(with: model), animated: true)
-                }
                 return cell
             }
         )
     }
 
-    func snapshot(_ items: [Product]) {
-        var snapshot = NSDiffableDataSourceSnapshot<SimpleDiffableSection, Product>()
+    func snapshot(_ items: [[Schedule]]) {
+        var snapshot = NSDiffableDataSourceSnapshot<SimpleDiffableSection, [Schedule]>()
         snapshot.appendSections([.main])
         snapshot.appendItems(items, toSection: .main)
         dataSource?.apply(snapshot, animatingDifferences: false)
@@ -85,16 +88,17 @@ final class ScheduleVC: UIViewController {
         case main
     }
 
-    private var dataSource: UITableViewDiffableDataSource<SimpleDiffableSection, Product>?
+    private var dataSource: UITableViewDiffableDataSource<SimpleDiffableSection, [Schedule]>?
+
+    private let dataService = CoreFactory.dataService
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.delegate = self
         tableView.register(
-            ProductCell.self,
-            forCellReuseIdentifier: Self.productCellReuseId
+            ScheduleCell.self,
+            forCellReuseIdentifier: Self.scheduleCellReuseId
         )
         return tableView
     }()
@@ -104,27 +108,14 @@ final class ScheduleVC: UIViewController {
             loadFooterView(load: isLoadingNextPage)
         }
     }
-}
 
-// MARK: UITableViewDelegate
-
-extension ScheduleVC: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard items.indices.contains(indexPath.row) else {
-            return
-        }
-        let id = items[indexPath.row].id
-        service?.getProduct(with: id, completion: { [weak self] result in
-            guard let self = self else {
-                return
-            }
+    private func getSchedule() {
+        service?.getSchedule(for: nil, completion: { [weak self] result in
             switch result {
-            case let .success(model):
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(VCFactory.buildProductVC(with: model), animated: true)
-                }
-            case let .failure(error):
-                self.snacker?.show(snack: error.localizedDescription, with: .error)
+            case let .success(items):
+                self?.items = items
+            case .failure:
+                self?.snacker?.show(snack: "Ошибка", with: .error)
             }
         })
     }

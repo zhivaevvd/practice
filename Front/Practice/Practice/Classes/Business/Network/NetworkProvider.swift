@@ -38,6 +38,13 @@ final class NetworkProviderImpl: NetworkProvider {
         self.requestBuilder = requestBuilder
         decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withFullDate]
+
+        dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
     }
 
     // MARK: Internal
@@ -72,6 +79,10 @@ final class NetworkProviderImpl: NetworkProvider {
 
     private let decoder: JSONDecoder
 
+    private let isoFormatter: ISO8601DateFormatter
+
+    private let dateFormatter: DateFormatter
+
     private let requestBuilder: RequestBuilder
 
     private func serializeData<T: Decodable>(
@@ -84,6 +95,12 @@ final class NetworkProviderImpl: NetworkProvider {
             return
         }
         decoder.keyDecodingStrategy = keyDecodingStrategy
+        decoder.dateDecodingStrategy = .custom { decoder in
+            let decoderContainer = try decoder.singleValueContainer()
+            let dateString = try decoderContainer.decode(String.self)
+
+            return self.isoFormatter.date(from: dateString.uppercased()) ?? Date()
+        }
         if let response = try? decoder.decode(T.self, from: data) {
             completion?(.success(response))
         } else if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {

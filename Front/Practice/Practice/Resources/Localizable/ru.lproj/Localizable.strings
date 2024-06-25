@@ -8,7 +8,10 @@
 
 "profile.title" = "Профиль";
 
-"catalog.title" = "Каталог";
+"schedule.title" = "Расписание";
+"schedule.lesson" = "Дисциплина: ";
+"schedule.teacher" = "Преподаватель: ";
+"schedule.classroom" = "Аудитория: ";
 "catalog.buy" = "Купить";
 
 "history.title" = "Мои заказы";

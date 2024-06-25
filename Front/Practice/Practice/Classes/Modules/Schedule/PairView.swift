@@ -1,0 +1,112 @@
+//
+//  PairView.swift
+//  Practice
+//
+//  Created by Влад Живаев on 25.06.2024.
+//
+
+import AutoLayoutSugar
+import UIKit
+
+final class PairView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureSubviews()
+        makeConstraints()
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    var model: Schedule? {
+        didSet {
+            guard let model else { return }
+            nameLabel.attributedText = buildTitleAndDescription(L10n.Schedule.lesson, model.lessonName)
+            teacherLabel.attributedText = buildTitleAndDescription(L10n.Schedule.teacher, model.teacher.name + " " + model.teacher.surname)
+            classLabel.attributedText = buildTitleAndDescription(L10n.Schedule.classroom, model.class.number)
+        }
+    }
+
+    var pairNumber: Int? {
+        didSet {
+            guard let pairNumber else { return }
+            pairNumberLabel.text = "\(String(pairNumber))."
+        }
+    }
+
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var teacherLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var classLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var pairNumberLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var pairNumberView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var pairView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private func configureSubviews() {
+        pairNumberView.addSubview(pairNumberLabel)
+
+        pairView.addSubview(nameLabel)
+        pairView.addSubview(teacherLabel)
+        pairView.addSubview(classLabel)
+
+        pairView.layer.borderWidth = 1
+        pairView.layer.borderColor = Asset.separator.color.cgColor
+        pairNumberView.layer.borderWidth = 1
+        pairNumberView.layer.borderColor = Asset.separator.color.cgColor
+
+        addSubview(pairNumberView)
+        addSubview(pairView)
+    }
+
+    private func makeConstraints() {
+        pairNumberLabel.top(8).left(16).right(8).bottom(8)
+
+        nameLabel.top(8).left(16).right(16)
+        teacherLabel.top(to: .bottom(8), of: nameLabel).left(16).right(16)
+        classLabel.top(to: .bottom(8), of: teacherLabel).left(16).right(16).bottom(8)
+
+        pairNumberView.pin(excluding: .right)
+        pairView.pin(excluding: .left).left(to: .right, of: pairNumberView)
+
+        pairView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - (48 + 32)).isActive = true
+    }
+
+    private func buildTitleAndDescription(_ title: String, _ description: String) -> NSMutableAttributedString {
+        let attrString = NSMutableAttributedString(string: title)
+        attrString.addAttributes([.foregroundColor: Asset.navBlue.color], range: NSRange(location: 0, length: attrString.length))
+        attrString.append(NSAttributedString(string: description))
+        return attrString
+    }
+}
