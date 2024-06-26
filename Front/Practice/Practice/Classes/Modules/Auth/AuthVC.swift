@@ -1,3 +1,7 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import UIKit
 
@@ -13,6 +17,12 @@ final class AuthVC: UIViewController {
     }
 
     // MARK: Internal
+
+    @IBOutlet var loginField: InputField!
+
+    @IBOutlet var passwordField: InputField!
+
+    @IBOutlet var signInButton: UIButton!
 
     func setup(with authService: AuthService, _ snacker: Snacker) {
         self.authService = authService
@@ -51,12 +61,6 @@ final class AuthVC: UIViewController {
             })
         }
     }
-
-    @IBOutlet var loginField: InputField!
-
-    @IBOutlet var passwordField: InputField!
-
-    @IBOutlet var signInButton: UIButton!
 
     // MARK: Private
 

@@ -1,8 +1,14 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import AutoLayoutSugar
 import UIKit
 
 class ProfileView: UIView {
+    // MARK: Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -12,6 +18,8 @@ class ProfileView: UIView {
         super.init(coder: coder)
         setup()
     }
+
+    // MARK: Internal
 
     var contentView: UIView?
 

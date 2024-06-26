@@ -1,14 +1,14 @@
 //
-//  PairView.swift
-//  Practice
-//
-//  Created by Влад Живаев on 25.06.2024.
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
 //
 
 import AutoLayoutSugar
 import UIKit
 
 final class PairView: UIView {
+    // MARK: Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
@@ -19,6 +19,8 @@ final class PairView: UIView {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Internal
 
     var model: Schedule? {
         didSet {
@@ -35,6 +37,8 @@ final class PairView: UIView {
             pairNumberLabel.text = "\(String(pairNumber))."
         }
     }
+
+    // MARK: Private
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()

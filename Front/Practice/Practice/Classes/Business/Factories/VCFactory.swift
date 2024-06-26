@@ -1,3 +1,7 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import UIKit
 
@@ -22,9 +26,11 @@ enum VCFactory {
                 let dataService = CoreFactory.dataService
                 let profileService = CoreFactory.buildProfileService()
                 vc.setup(with: profileService, dataService: dataService)
-            case let vc as HistoryVC:
-                let historyService = CoreFactory.buildHistoryService()
-                vc.setup(with: historyService)
+            case let vc as CreateScheduleVC:
+                let scheduleService = CoreFactory.buildScheduleService()
+                vc.scheduleService = scheduleService
+                vc.snacker = CoreFactory.snacker
+                vc.dataService = CoreFactory.dataService
             case let vc as ScheduleVC:
                 vc.service = CoreFactory.buildScheduleService()
                 vc.snacker = CoreFactory.snacker
@@ -36,21 +42,6 @@ enum VCFactory {
         tabBarVC.dataService = CoreFactory.dataService
 
         return tabBarVC
-    }
-
-    static func buildProductVC(with product: Product) -> UIViewController {
-        let vc = ProductVC()
-        vc.product = product
-        return vc
-    }
-
-    static func buildOrderVC(with product: Product) -> UIViewController {
-        let vc = OrderVC()
-        let orderServise = CoreFactory.buildOrderService()
-        let snacker = CoreFactory.snacker
-        vc.setup(with: orderServise, snacker: snacker)
-        vc.product = product
-        return vc
     }
 
     static func buildBottomSheetController(with contentView: UIView, onEveryTapOut: (() -> Void)?) -> UIViewController {

@@ -25,7 +25,7 @@ fmt:
 
 ## lint: Launch swift files linter check
 lint:
-	mint run swiftlint --path SchoolStore
+	mint run swiftlint --path Practice
 
 ## swiftgen: Trigger code generation from assets with swiftgen tool
 swiftgen:

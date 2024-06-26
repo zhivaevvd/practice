@@ -1,17 +1,29 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import Foundation
 
+// MARK: - ProfileType
+
 struct ProfileType: Codable, RawRepresentable, Hashable, Equatable {
+    // MARK: Lifecycle
+
     init(rawValue: String) {
         self.rawValue = rawValue
     }
-    
+
+    // MARK: Internal
+
     static let admin: ProfileType = .init(rawValue: "admin")
     static let student: ProfileType = .init(rawValue: "student")
     static let teacher: ProfileType = .init(rawValue: "teacher")
-    
+
     let rawValue: String
 }
+
+// MARK: - Profile
 
 struct Profile: Codable, Hashable, Equatable {
     let id: Int

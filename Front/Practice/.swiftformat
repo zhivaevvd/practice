@@ -1,0 +1,7 @@
+--swiftversion 5.7
+--header "\nPractice\nCopyright © {created.year} Vladislav Zhivaev. All rights reserved.\n//"
+--maxwidth 140
+--wraparguments before-first
+--wrapcollections before-first
+--lifecycle viewDidLoad,viewWillAppear,viewDidAppear,viewDidDisappear,viewWillDisappear
+--enable isEmpty,organizeDeclarations,markTypes

@@ -1,13 +1,15 @@
 //
-//  Group.swift
-//  Practice
-//
-//  Created by Влад Живаев on 25.06.2024.
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
 //
 
 import Foundation
 
-public struct Group: Decodable, Hashable {
-    public let id: Int
-    public let number: String
+struct Group: Decodable, Hashable, Pickerable {
+    let id: Int
+    let number: String
+
+    var pickerText: String {
+        number
+    }
 }

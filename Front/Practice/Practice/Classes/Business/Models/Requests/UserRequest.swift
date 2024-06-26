@@ -1,4 +1,7 @@
-
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import Foundation
 
@@ -38,7 +41,7 @@ enum UserRequest: Request {
             else {
                 return nil
             }
-            
+
             return data
         default:
             return nil

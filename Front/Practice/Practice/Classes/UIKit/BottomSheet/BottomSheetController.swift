@@ -1,4 +1,7 @@
-
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import AutoLayoutSugar
 import UIKit

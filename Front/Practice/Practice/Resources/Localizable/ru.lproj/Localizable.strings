@@ -5,6 +5,10 @@
 
 "common.error" = "Что-то пошло не так \n Повторите попытку позже";
 "common.emptyField" = "Поле пустое";
+"common.save" = "Сохранить";
+"common.errorSimple" = "Ошибка";
+"common.fieldsError" = "Одно или несколько полей не заполненно";
+"common.success" = "Успешно!";
 
 "profile.title" = "Профиль";
 
@@ -12,41 +16,15 @@
 "schedule.lesson" = "Дисциплина: ";
 "schedule.teacher" = "Преподаватель: ";
 "schedule.classroom" = "Аудитория: ";
-"catalog.buy" = "Купить";
+"schedule.group" = "Группа: ";
+"schedule.date" = "Дата: ";
+"schedule.pair" = "Пара: ";
+"schedule.teachersError" = "Не удалось загрузить преподавателей";
+"schedule.lessonsError" = "Не удалось загрузить дисциплины";
+"schedule.groupsError" = "Не удалось загрузить группы";
+"schedule.classesError" = "Не удалось загрузить аудитории";
 
-"history.title" = "Мои заказы";
-"history.canceled" = "Завершен";
-"history.inWork" = "В работе";
-
-
-"product.payTitle" = "КУПИТЬ СЕЙЧАС";
-"product.size" = "Размер";
-"product.sizeS" = "S";
-"product.sizeM" = "M";
-"product.sizeL" = "L";
-"product.sizeXL" = "XL";
-"product.badge" = "LiteSummer";
-
-
-"order.title" = "Оформление заказа";
-"order.apartment" = "Квартира";
-"order.house" = "Город, улица, дом";
-"order.orderDate" = "Дата доставки";
-"order.payTitle" = "Купить за ";
-
-"editingTitle.title" = "Редактирование профиля";
-"editingTitle.name" = "Имя";
-"editingTitle.surname" = "Фамилия";
-"editingTitle.occupation" = "Пол";
-"editingTitle.anotherOccupation" = "Другой пол";
-"editingTitle.action" = "ИЗМЕНИТЬ";
-"editingTitle.double" = "Род деятельности не изменился";
-"editingTitle.settings" = "Настройки";
-
-"occupation.iosDeveloper" = "Женщина";
-"occupation.androidDeveloper" = "Мужчина";
-"occupation.tester" = "Ребенок";
-"occupation.another" = "Другое";
+"createSchedule.title" = "Составить расписание";
 
 "action.back" = "Назад";
 "action.cancel" = "Отменить";
@@ -57,7 +35,6 @@
 "action.error" = "Ошибка";
 "action.errorMsg" = "Вы не можете удалить активный заказ";
 "action.ok" = "Ок";
-
 
 "question.exit" = "Хотите выйти?";
 "question.delete" = "Хотите удалить заказ из истории?";

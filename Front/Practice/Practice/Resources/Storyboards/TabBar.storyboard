@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--History-->
+        <!--CreateSchedule-->
         <scene sceneID="gEL-vK-Wba">
             <objects>
-                <viewControllerPlaceholder storyboardName="History" id="WEQ-Mm-SLK" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CreateSchedule" id="WEQ-Mm-SLK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="person.crop.circle.fill" catalog="system" id="A8X-RZ-pps"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tlq-yl-fhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

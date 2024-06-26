@@ -1,7 +1,6 @@
 //
-//  UILoadable.swift
-//
-//  Created by Ксения Дураева
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
 //
 
 import Foundation

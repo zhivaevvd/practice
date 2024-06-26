@@ -1,3 +1,7 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import Foundation
 
@@ -18,19 +22,7 @@ enum CoreFactory {
         ScheduleServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
 
-    static func buildHistoryService() -> HistoryService {
-        HistoryServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
-    }
-
-    static func buildOrderService() -> OrderService {
-        OrderServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
-    }
-
     static func buildProfileService() -> ProfileService {
         ProfileServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
-    }
-
-    static func buildEditServise() -> AuthService {
-        AuthServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
 }
