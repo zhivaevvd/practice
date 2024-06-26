@@ -10,4 +10,6 @@ class Person extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $fillable = ['auth_id', 'name', 'surname', 'type', 'avatar_url', 'group_id'];
 }

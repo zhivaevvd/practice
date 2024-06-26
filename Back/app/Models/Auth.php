@@ -12,4 +12,6 @@ class Auth extends Model
     protected $table = 'auth';
 
     public $timestamps = false;
+
+    protected $fillable = ['login', 'password'];
 }

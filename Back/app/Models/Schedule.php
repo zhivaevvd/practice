@@ -10,4 +10,6 @@ class Schedule extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $fillable = ['date', 'teacher_id', 'group_id', 'class_id', 'lesson_id', 'pair_number'];
 }
