@@ -14,6 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'schedules'], function () {
+    Route::get('/{groupId}', [\App\Http\Controllers\ScheduleController::class, 'getByGroupId']);
+});
+
+Route::group(['prefix' => 'person'], function () {
+    Route::get('/{person}', [\App\Http\Controllers\PersonController::class, 'getById']);
+});
+
+Route::group(['prefix' => 'teachers'], function () {
+    Route::get('/', [\App\Http\Controllers\PersonController::class, 'getTeachers']);
+});
+
+Route::group(['prefix' => 'classes'], function () {
+    Route::get('/', [\App\Http\Controllers\AudienceController::class, 'index']);
+});
+
+Route::group(['prefix' => 'lessons'], function () {
+    Route::get('/{teacherId}', [\App\Http\Controllers\LessonController::class, 'getByTeacherId']);
 });
