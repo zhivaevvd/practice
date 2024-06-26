@@ -1,7 +1,11 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import Foundation
 
-// MARK: - CatalogService
+// MARK: - ScheduleService
 
 protocol ScheduleService: AnyObject {
     func getSchedule(for groupId: Int?, completion: ((Result<[Schedule], Error>) -> Void)?)
@@ -9,9 +13,10 @@ protocol ScheduleService: AnyObject {
     func getTeachers(completion: ((Result<TeachersResponse, Error>) -> Void)?)
     func getLessons(for teacherId: Int?, completion: ((Result<LessonsResponse, Error>) -> Void)?)
     func getClasses(completion: ((Result<ClassesResponse, Error>) -> Void)?)
+    func createSchedule(payload: CreateSchedulePayload, completion: ((Result<SuccessResponse, Error>) -> Void)?)
 }
 
-// MARK: - CatalogServiceImpl
+// MARK: - ScheduleServiceImpl
 
 final class ScheduleServiceImpl: ScheduleService {
     // MARK: Lifecycle
@@ -69,6 +74,17 @@ final class ScheduleServiceImpl: ScheduleService {
 
     func getClasses(completion: ((Result<ClassesResponse, Error>) -> Void)?) {
         networkProvider.mock(ScheduleRequest.classes) { (result: Result<ClassesResponse, Error>) in
+            switch result {
+            case .success:
+                completion?(result)
+            case let .failure(error):
+                completion?(Result.failure(error))
+            }
+        }
+    }
+
+    func createSchedule(payload: CreateSchedulePayload, completion: ((Result<SuccessResponse, Error>) -> Void)?) {
+        networkProvider.mock(ScheduleRequest.createSchedule(payload: payload)) { (result: Result<SuccessResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)

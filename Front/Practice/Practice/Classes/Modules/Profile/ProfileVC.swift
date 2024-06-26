@@ -1,9 +1,15 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import AutoLayoutSugar
 import Kingfisher
 import UIKit
 
 class ProfileVC: UIViewController {
+    // MARK: Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.selectedItem?.title = L10n.Profile.title
@@ -19,6 +25,10 @@ class ProfileVC: UIViewController {
         }
     }
 
+    // MARK: Internal
+
+    @IBOutlet var ProfileView: ProfileView!
+
     func setup() {
         photoProfile.centerX()
         nameLabel.centerX().top(to: .bottom(16), of: photoProfile)
@@ -28,6 +38,67 @@ class ProfileVC: UIViewController {
     func setup(with profileService: ProfileService, dataService: DataService) {
         self.profileService = profileService
         self.dataService = dataService
+    }
+
+    @IBAction func logoutPressedButton(_: Any) {
+        let alert = UIAlertController(title: L10n.Action.exit, message: L10n.Question.exit, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: L10n.Action.exitAction, style: .default) { (_: UIAlertAction) -> Void in
+
+            UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
+            self.dataService?.appState.accessToken = nil
+        })
+        alert.addAction(UIAlertAction(title: L10n.Action.cancel, style: .cancel) { (_: UIAlertAction) -> Void in
+        })
+        present(alert, animated: true, completion: nil)
+    }
+
+    // MARK: Private
+
+    private var snacker: Snacker?
+
+    private var profileService: ProfileService?
+    private var dataService: DataService?
+
+    private lazy var photoProfile: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.backgroundColor = .white
+        image.contentMode = .scaleAspectFill
+        image.height(90).width(90)
+
+        return image
+    }()
+
+    private lazy var editButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.setImage(Asset.settings.image, for: .normal)
+        button.layer.cornerRadius = 50
+        return button
+    }()
+
+    private lazy var nameLabel: UILabel = {
+        let txt = UILabel()
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        txt.font = .systemFont(ofSize: 24, weight: .medium)
+        txt.textColor = .white
+        return txt
+    }()
+
+    private lazy var speciality: UILabel = {
+        let txt = UILabel()
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        txt.font = .systemFont(ofSize: 14, weight: .medium)
+        txt.textColor = .white
+        return txt
+    }()
+
+    private var profile: Profile? {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.display()
+            }
+        }
     }
 
     private func loadData() {
@@ -73,68 +144,5 @@ class ProfileVC: UIViewController {
         speciality.text = type
 
         setup()
-    }
-
-    // MARK: Internal
-
-    private var snacker: Snacker?
-
-    private var profile: Profile? {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.display()
-            }
-        }
-    }
-
-    private var profileService: ProfileService?
-    private var dataService: DataService?
-
-    private lazy var photoProfile: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .white
-        image.contentMode = .scaleAspectFill
-        image.height(90).width(90)
-
-        return image
-    }()
-
-    private lazy var editButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .white
-        button.setImage(Asset.settings.image, for: .normal)
-        button.layer.cornerRadius = 50
-        return button
-    }()
-
-    private lazy var nameLabel: UILabel = {
-        let txt = UILabel()
-        txt.translatesAutoresizingMaskIntoConstraints = false
-        txt.font = .systemFont(ofSize: 24, weight: .medium)
-        txt.textColor = .white
-        return txt
-    }()
-
-    private lazy var speciality: UILabel = {
-        let txt = UILabel()
-        txt.translatesAutoresizingMaskIntoConstraints = false
-        txt.font = .systemFont(ofSize: 14, weight: .medium)
-        txt.textColor = .white
-        return txt
-    }()
-
-    @IBOutlet var ProfileView: ProfileView!
-
-    @IBAction func logoutPressedButton(_: Any) {
-        let alert = UIAlertController(title: L10n.Action.exit, message: L10n.Question.exit, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: L10n.Action.exitAction, style: .default) { (_: UIAlertAction) -> Void in
-
-            UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
-            self.dataService?.appState.accessToken = nil
-        })
-        alert.addAction(UIAlertAction(title: L10n.Action.cancel, style: .cancel) { (_: UIAlertAction) -> Void in
-        })
-        present(alert, animated: true, completion: nil)
     }
 }

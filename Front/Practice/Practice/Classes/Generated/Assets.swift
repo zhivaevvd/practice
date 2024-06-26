@@ -1,3 +1,8 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
+
 // swiftlint:disable all
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
@@ -15,9 +20,9 @@ internal typealias AssetColorTypeAlias = ColorAsset.Color
 @available(*, deprecated, renamed: "ImageAsset.Image", message: "This typealias will be removed in SwiftGen 7.0")
 internal typealias AssetImageTypeAlias = ImageAsset.Image
 
-// swiftlint:disable superfluous_disable_command file_length implicit_return
+// MARK: - Asset
 
-// MARK: - Asset Catalogs
+// swiftlint:disable superfluous_disable_command file_length implicit_return
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
@@ -31,6 +36,7 @@ internal enum Asset {
     internal static let textPrimary = ColorAsset(name: "text.primary")
     internal static let textSecondary = ColorAsset(name: "text.secondary")
     internal static let white = ColorAsset(name: "white")
+    internal static let check = ImageAsset(name: "check")
     internal static let fieldEye = ImageAsset(name: "field.eye")
     internal static let imagePlaceholder = ImageAsset(name: "image.Placeholder")
     internal static let itemAddToCart = ImageAsset(name: "item.addToCart")
@@ -43,11 +49,19 @@ internal enum Asset {
     internal static let saleTwo = ImageAsset(name: "sale.two")
 }
 
+// MARK: - ColorAsset
+
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-// MARK: - Implementation Details
-
 internal final class ColorAsset {
+    // MARK: Lifecycle
+
+    fileprivate init(name: String) {
+        self.name = name
+    }
+
+    // MARK: Internal
+
     internal fileprivate(set) var name: String
 
     #if os(macOS)
@@ -63,10 +77,6 @@ internal final class ColorAsset {
         }
         return color
     }()
-
-    fileprivate init(name: String) {
-        self.name = name
-    }
 }
 
 internal extension ColorAsset.Color {
@@ -82,6 +92,8 @@ internal extension ColorAsset.Color {
         #endif
     }
 }
+
+// MARK: - ImageAsset
 
 internal struct ImageAsset {
     internal fileprivate(set) var name: String
@@ -110,8 +122,11 @@ internal struct ImageAsset {
 }
 
 internal extension ImageAsset.Image {
-    @available(macOS, deprecated,
-               message: "This initializer is unsafe on macOS, please use the ImageAsset.image property")
+    @available(
+        macOS,
+        deprecated,
+        message: "This initializer is unsafe on macOS, please use the ImageAsset.image property"
+    )
     convenience init?(asset: ImageAsset) {
         #if os(iOS) || os(tvOS)
             let bundle = BundleToken.bundle
@@ -123,6 +138,8 @@ internal extension ImageAsset.Image {
         #endif
     }
 }
+
+// MARK: - BundleToken
 
 // swiftlint:disable convenience_type
 private final class BundleToken {

@@ -1,3 +1,7 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import AutoLayoutSugar
 import Foundation
@@ -15,6 +19,12 @@ final class ScheduleVC: UIViewController {
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
         configTableView()
+        getSchedule()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        items = []
         getSchedule()
     }
 
@@ -115,7 +125,7 @@ final class ScheduleVC: UIViewController {
             case let .success(items):
                 self?.items = items
             case .failure:
-                self?.snacker?.show(snack: "Ошибка", with: .error)
+                self?.snacker?.show(snack: L10n.Common.errorSimple, with: .error)
             }
         })
     }

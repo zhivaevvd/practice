@@ -5,6 +5,7 @@
 
 import Foundation
 
-struct LessonsResponse: Decodable {
-    let lessons: [Lesson]
+protocol Pickerable {
+    var id: Int { get }
+    var pickerText: String { get }
 }

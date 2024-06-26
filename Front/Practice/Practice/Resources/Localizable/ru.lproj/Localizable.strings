@@ -5,6 +5,10 @@
 
 "common.error" = "Что-то пошло не так \n Повторите попытку позже";
 "common.emptyField" = "Поле пустое";
+"common.save" = "Сохранить";
+"common.errorSimple" = "Ошибка";
+"common.fieldsError" = "Одно или несколько полей не заполненно";
+"common.success" = "Успешно!";
 
 "profile.title" = "Профиль";
 
@@ -12,6 +16,13 @@
 "schedule.lesson" = "Дисциплина: ";
 "schedule.teacher" = "Преподаватель: ";
 "schedule.classroom" = "Аудитория: ";
+"schedule.group" = "Группа: ";
+"schedule.date" = "Дата: ";
+"schedule.pair" = "Пара: ";
+"schedule.teachersError" = "Не удалось загрузить преподавателей";
+"schedule.lessonsError" = "Не удалось загрузить дисциплины";
+"schedule.groupsError" = "Не удалось загрузить группы";
+"schedule.classesError" = "Не удалось загрузить аудитории";
 
 "createSchedule.title" = "Составить расписание";
 

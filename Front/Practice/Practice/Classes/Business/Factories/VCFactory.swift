@@ -1,3 +1,7 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import UIKit
 
@@ -23,9 +27,10 @@ enum VCFactory {
                 let profileService = CoreFactory.buildProfileService()
                 vc.setup(with: profileService, dataService: dataService)
             case let vc as CreateScheduleVC:
-                print("")
-            //    let createScheduleService = CoreFactory.buildCreateScheduleService()
-            //   vc.setup(with: historyService)
+                let scheduleService = CoreFactory.buildScheduleService()
+                vc.scheduleService = scheduleService
+                vc.snacker = CoreFactory.snacker
+                vc.dataService = CoreFactory.dataService
             case let vc as ScheduleVC:
                 vc.service = CoreFactory.buildScheduleService()
                 vc.snacker = CoreFactory.snacker

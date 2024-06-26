@@ -5,6 +5,7 @@
 
 import Foundation
 
-struct LessonsResponse: Decodable {
-    let lessons: [Lesson]
+struct SuccessResponse: Decodable {
+    let success: Bool
+    let error: String?
 }

@@ -1,3 +1,8 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
+
 // swiftlint:disable all
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
@@ -5,10 +10,10 @@
 import Foundation
 import UIKit
 
+// MARK: - StoryboardScene
+
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length implicit_return
-
-// MARK: - Storyboard Scenes
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardScene {
@@ -25,7 +30,10 @@ internal enum StoryboardScene {
 
         internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: CreateSchedule.self)
 
-        internal static let createSchedule = SceneType<UIKit.UINavigationController>(storyboard: CreateSchedule.self, identifier: "CreateSchedule")
+        internal static let createSchedule = SceneType<UIKit.UINavigationController>(
+            storyboard: CreateSchedule.self,
+            identifier: "CreateSchedule"
+        )
     }
 
     internal enum Profile: StoryboardType {
@@ -57,9 +65,9 @@ internal enum StoryboardScene {
     }
 }
 
-// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
+// MARK: - StoryboardType
 
-// MARK: - Implementation Details
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 internal protocol StoryboardType {
     static var storyboardName: String { get }
@@ -71,6 +79,8 @@ internal extension StoryboardType {
         return UIStoryboard(name: name, bundle: BundleToken.bundle)
     }
 }
+
+// MARK: - SceneType
 
 internal struct SceneType<T: UIViewController> {
     internal let storyboard: StoryboardType.Type
@@ -86,9 +96,11 @@ internal struct SceneType<T: UIViewController> {
 
     @available(iOS 13.0, tvOS 13.0, *)
     internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
-        return storyboard.storyboard.instantiateViewController(identifier: identifier, creator: block)
+        storyboard.storyboard.instantiateViewController(identifier: identifier, creator: block)
     }
 }
+
+// MARK: - InitialSceneType
 
 internal struct InitialSceneType<T: UIViewController> {
     internal let storyboard: StoryboardType.Type
@@ -108,6 +120,8 @@ internal struct InitialSceneType<T: UIViewController> {
         return controller
     }
 }
+
+// MARK: - BundleToken
 
 // swiftlint:disable convenience_type
 private final class BundleToken {

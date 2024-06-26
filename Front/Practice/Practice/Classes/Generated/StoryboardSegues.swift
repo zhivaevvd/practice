@@ -1,3 +1,8 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
+
 // swiftlint:disable all
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
@@ -5,17 +10,17 @@
 import Foundation
 import UIKit
 
+// MARK: - StoryboardSegue
+
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
-
-// MARK: - Storyboard Segues
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardSegue {}
 
-// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
+// MARK: - SegueType
 
-// MARK: - Implementation Details
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 internal protocol SegueType: RawRepresentable {}
 

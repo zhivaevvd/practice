@@ -5,11 +5,18 @@
 
 import Foundation
 
-struct Lesson: Decodable, Pickerable {
+struct Pair: Pickerable {
+    // MARK: Lifecycle
+
+    init(id: Int) {
+        self.id = id
+    }
+
+    // MARK: Internal
+
     let id: Int
-    let name: String
 
     var pickerText: String {
-        name
+        String(id)
     }
 }

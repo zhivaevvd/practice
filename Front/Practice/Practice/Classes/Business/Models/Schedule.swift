@@ -1,8 +1,6 @@
 //
-//  Schedule.swift
-//  Practice
-//
-//  Created by Влад Живаев on 25.06.2024.
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
 //
 
 import Foundation

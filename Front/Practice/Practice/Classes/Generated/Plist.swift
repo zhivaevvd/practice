@@ -1,16 +1,21 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
+
 // swiftlint:disable all
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
 import Foundation
 
+// MARK: - PlistFiles
+
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
-// MARK: - Plist Files
-
 // swiftlint:disable identifier_name line_length type_body_length
 internal enum PlistFiles {
-    private static let _document = PlistDocument(path: "Info.plist")
+    // MARK: Internal
 
     internal static let cfBundleDevelopmentRegion: String = _document["CFBundleDevelopmentRegion"]
     internal static let cfBundleExecutable: String = _document["CFBundleExecutable"]
@@ -27,6 +32,10 @@ internal enum PlistFiles {
     internal static let uiRequiredDeviceCapabilities: [String] = _document["UIRequiredDeviceCapabilities"]
     internal static let uiSupportedInterfaceOrientations: [String] = _document["UISupportedInterfaceOrientations"]
     internal static let uiSupportedInterfaceOrientationsIpad: [String] = _document["UISupportedInterfaceOrientations~ipad"]
+
+    // MARK: Private
+
+    private static let _document = PlistDocument(path: "Info.plist")
 }
 
 // swiftlint:enable identifier_name line_length type_body_length
@@ -42,8 +51,10 @@ private func arrayFromPlist<T>(at path: String) -> [T] {
     return data
 }
 
+// MARK: - PlistDocument
+
 private struct PlistDocument {
-    let data: [String: Any]
+    // MARK: Lifecycle
 
     init(path: String) {
         guard let url = BundleToken.bundle.url(forResource: path, withExtension: nil),
@@ -54,6 +65,10 @@ private struct PlistDocument {
         self.data = data
     }
 
+    // MARK: Internal
+
+    let data: [String: Any]
+
     subscript<T>(key: String) -> T {
         guard let result = data[key] as? T else {
             fatalError("Property '\(key)' is not of type \(T.self)")
@@ -61,6 +76,8 @@ private struct PlistDocument {
         return result
     }
 }
+
+// MARK: - BundleToken
 
 // swiftlint:disable convenience_type
 private final class BundleToken {

@@ -1,3 +1,7 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import Foundation
 import KeychainAccess

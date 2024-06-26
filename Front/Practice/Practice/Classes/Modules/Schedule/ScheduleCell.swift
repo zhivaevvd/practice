@@ -1,14 +1,14 @@
 //
-//  ScheduleCell.swift
-//  Practice
-//
-//  Created by Влад Живаев on 25.06.2024.
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
 //
 
 import AutoLayoutSugar
 import UIKit
 
 final class ScheduleCell: UITableViewCell {
+    // MARK: Lifecycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -20,6 +20,8 @@ final class ScheduleCell: UITableViewCell {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Internal
 
     var model: [Schedule] = [] {
         didSet {
@@ -44,6 +46,8 @@ final class ScheduleCell: UITableViewCell {
             }
         }
     }
+
+    // MARK: Private
 
     private lazy var containerStack: UIStackView = {
         let stackView = UIStackView()

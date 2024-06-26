@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140DF85C2C2C60480019D02A /* successResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 140DF85B2C2C60480019D02A /* successResponse.json */; };
+		140DF85E2C2C60880019D02A /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DF85D2C2C60880019D02A /* SuccessResponse.swift */; };
+		140DF8602C2C645A0019D02A /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DF85F2C2C645A0019D02A /* Pair.swift */; };
+		140EDC302C2C11F700AB196E /* CreateScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC2F2C2C11F700AB196E /* CreateScheduleView.swift */; };
+		140EDC322C2C126E00AB196E /* CreateSchedulePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC312C2C126E00AB196E /* CreateSchedulePayload.swift */; };
+		140EDC342C2C223D00AB196E /* Pickerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC332C2C223D00AB196E /* Pickerable.swift */; };
+		140EDC362C2C234300AB196E /* SelectSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC352C2C234300AB196E /* SelectSheet.swift */; };
 		145D72212C2ACA25005CAC92 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D72202C2ACA25005CAC92 /* UIStackView+Extensions.swift */; };
 		145D72232C2AD30C005CAC92 /* PairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D72222C2AD30C005CAC92 /* PairView.swift */; };
 		145D72262C2AEE8E005CAC92 /* OrderedDictionary in Frameworks */ = {isa = PBXBuildFile; productRef = 145D72252C2AEE8E005CAC92 /* OrderedDictionary */; };
@@ -103,6 +110,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		140DF85B2C2C60480019D02A /* successResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = successResponse.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		140DF85D2C2C60880019D02A /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
+		140DF85F2C2C645A0019D02A /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
+		140EDC2F2C2C11F700AB196E /* CreateScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleView.swift; sourceTree = "<group>"; };
+		140EDC312C2C126E00AB196E /* CreateSchedulePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedulePayload.swift; sourceTree = "<group>"; };
+		140EDC332C2C223D00AB196E /* Pickerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickerable.swift; sourceTree = "<group>"; };
+		140EDC352C2C234300AB196E /* SelectSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSheet.swift; sourceTree = "<group>"; };
 		145D72202C2ACA25005CAC92 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		145D72222C2AD30C005CAC92 /* PairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairView.swift; sourceTree = "<group>"; };
 		145ECD192C2AC03E00D0F8B3 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -370,6 +384,9 @@
 			isa = PBXGroup;
 			children = (
 				C214165F270DBD1000C40071 /* CreateScheduleVC.swift */,
+				140EDC2F2C2C11F700AB196E /* CreateScheduleView.swift */,
+				140EDC312C2C126E00AB196E /* CreateSchedulePayload.swift */,
+				140EDC352C2C234300AB196E /* SelectSheet.swift */,
 			);
 			path = CreateScheduleVC;
 			sourceTree = "<group>";
@@ -428,6 +445,8 @@
 				145ECD1D2C2AC0A800D0F8B3 /* Group.swift */,
 				145ECD1F2C2AC0DA00D0F8B3 /* Class.swift */,
 				14C2CD012C2B1B8A00211BDD /* Lesson.swift */,
+				140EDC332C2C223D00AB196E /* Pickerable.swift */,
+				140DF85F2C2C645A0019D02A /* Pair.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -501,6 +520,7 @@
 				14C2CCFF2C2B19EF00211BDD /* TeachersResponse.swift */,
 				14C2CD032C2B1BFF00211BDD /* LessonsResponse.swift */,
 				14C2CD072C2B1D8500211BDD /* ClassesResponse.swift */,
+				140DF85D2C2C60880019D02A /* SuccessResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -519,6 +539,7 @@
 				14C2CCFD2C2B198500211BDD /* teachers.json */,
 				14C2CD052C2B1C3600211BDD /* lessons.json */,
 				14C2CD092C2B1DE500211BDD /* classes.json */,
+				140DF85B2C2C60480019D02A /* successResponse.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -602,6 +623,7 @@
 				C2B96D47270DDE360012D0E8 /* authFailed.json in Resources */,
 				C2B96D5B270DE9D90012D0E8 /* userUEerror.json in Resources */,
 				C21E13692704676800867E2E /* Profile.storyboard in Resources */,
+				140DF85C2C2C60480019D02A /* successResponse.json in Resources */,
 				B5A7BBEE2842474600B2D70D /* Empty.xib in Resources */,
 				B5A21BF42733E4DD00614B22 /* ProfileView.xib in Resources */,
 				C2F28B3B27048E92000A2703 /* auth.json in Resources */,
@@ -671,6 +693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140DF85E2C2C60880019D02A /* SuccessResponse.swift in Sources */,
 				C27E0F1F270473A20015530B /* StoryboardSegues.swift in Sources */,
 				C21E134B27045C6C00867E2E /* AuthVC.swift in Sources */,
 				C239CB6A27205AA6003ABBB0 /* LoaderParameters.swift in Sources */,
@@ -684,8 +707,10 @@
 				C21E134F27045CA900867E2E /* TabBarVC.swift in Sources */,
 				B5A21C242738005B00614B22 /* DeleteOrder.swift in Sources */,
 				C21E135B270464DD00867E2E /* NetworkProvider.swift in Sources */,
+				140DF8602C2C645A0019D02A /* Pair.swift in Sources */,
 				C21E13552704619D00867E2E /* CoreFactory.swift in Sources */,
 				C21E13202704510C00867E2E /* AppDelegate.swift in Sources */,
+				140EDC302C2C11F700AB196E /* CreateScheduleView.swift in Sources */,
 				145ECD1A2C2AC03E00D0F8B3 /* Schedule.swift in Sources */,
 				C21E13592704647900867E2E /* Errors.swift in Sources */,
 				C2D720A727048AF000C40EA5 /* AuthResponse.swift in Sources */,
@@ -698,11 +723,13 @@
 				C2B96D49270DDE6F0012D0E8 /* ErrorResponse.swift in Sources */,
 				C2B96D41270DD9770012D0E8 /* SnackerStyle.swift in Sources */,
 				145ECD242C2AC4AE00D0F8B3 /* ScheduleCell.swift in Sources */,
+				140EDC362C2C234300AB196E /* SelectSheet.swift in Sources */,
 				145ECD202C2AC0DA00D0F8B3 /* Class.swift in Sources */,
 				C21E13632704661500867E2E /* VCFactory.swift in Sources */,
 				C2151F52271885F3009036CB /* ScheduleService.swift in Sources */,
 				14C2CD042C2B1BFF00211BDD /* LessonsResponse.swift in Sources */,
 				B5B154832730089F00C92082 /* BottomSheetParametersProtocol.swift in Sources */,
+				140EDC342C2C223D00AB196E /* Pickerable.swift in Sources */,
 				C21E135D270464FF00867E2E /* Request.swift in Sources */,
 				C27E0F242704759D0015530B /* ProfileVC.swift in Sources */,
 				C2B96D68270DEAA60012D0E8 /* ScheduleRequests.swift in Sources */,
@@ -715,6 +742,7 @@
 				14C2CD022C2B1B8A00211BDD /* Lesson.swift in Sources */,
 				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
+				140EDC322C2C126E00AB196E /* CreateSchedulePayload.swift in Sources */,
 				C239CB6827205AA6003ABBB0 /* UILoadable+UIView.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
 				B5B15487273008C700C92082 /* PresentationController.swift in Sources */,

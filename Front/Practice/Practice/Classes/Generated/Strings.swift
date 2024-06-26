@@ -1,20 +1,20 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
+
 // swiftlint:disable all
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
 import Foundation
 
-// swiftlint:disable superfluous_disable_command file_length implicit_return
+// MARK: - L10n
 
-// MARK: - Strings
+// swiftlint:disable superfluous_disable_command file_length implicit_return
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-    /// Plural format key: "%#@VARIABLE@"
-    internal static func ageValue(_ p1: Int) -> String {
-        return L10n.tr("Localizable", "age-value", p1)
-    }
-
     internal enum Action {
         /// Назад
         internal static let back = L10n.tr("Localizable", "action.back")
@@ -50,6 +50,14 @@ internal enum L10n {
         internal static let emptyField = L10n.tr("Localizable", "common.emptyField")
         /// Что-то пошло не так \n Повторите попытку позже
         internal static let error = L10n.tr("Localizable", "common.error")
+        /// Ошибка
+        internal static let errorSimple = L10n.tr("Localizable", "common.errorSimple")
+        /// Одно или несколько полей не заполненно
+        internal static let fieldsError = L10n.tr("Localizable", "common.fieldsError")
+        /// Сохранить
+        internal static let save = L10n.tr("Localizable", "common.save")
+        /// Успешно!
+        internal static let success = L10n.tr("Localizable", "common.success")
     }
 
     internal enum CreateSchedule {
@@ -70,14 +78,33 @@ internal enum L10n {
     }
 
     internal enum Schedule {
+        /// Не удалось загрузить аудитории
+        internal static let classesError = L10n.tr("Localizable", "schedule.classesError")
         /// Аудитория:
         internal static let classroom = L10n.tr("Localizable", "schedule.classroom")
+        /// Дата:
+        internal static let date = L10n.tr("Localizable", "schedule.date")
+        /// Группа:
+        internal static let group = L10n.tr("Localizable", "schedule.group")
+        /// Не удалось загрузить группы
+        internal static let groupsError = L10n.tr("Localizable", "schedule.groupsError")
         /// Дисциплина:
         internal static let lesson = L10n.tr("Localizable", "schedule.lesson")
+        /// Не удалось загрузить дисциплины
+        internal static let lessonsError = L10n.tr("Localizable", "schedule.lessonsError")
+        /// Пара:
+        internal static let pair = L10n.tr("Localizable", "schedule.pair")
         /// Преподаватель:
         internal static let teacher = L10n.tr("Localizable", "schedule.teacher")
+        /// Не удалось загрузить преподавателей
+        internal static let teachersError = L10n.tr("Localizable", "schedule.teachersError")
         /// Расписание
         internal static let title = L10n.tr("Localizable", "schedule.title")
+    }
+
+    /// Plural format key: "%#@VARIABLE@"
+    internal static func ageValue(_ p1: Int) -> String {
+        L10n.tr("Localizable", "age-value", p1)
     }
 }
 
@@ -92,6 +119,8 @@ extension L10n {
         return String(format: format, locale: Locale.current, arguments: args)
     }
 }
+
+// MARK: - BundleToken
 
 // swiftlint:disable convenience_type
 private final class BundleToken {

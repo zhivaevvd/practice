@@ -1,4 +1,7 @@
-
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import Foundation
 
@@ -8,6 +11,7 @@ enum ScheduleRequest: Request {
     case getTeachers
     case getLessons(teacherId: Int?)
     case classes
+    case createSchedule(payload: CreateSchedulePayload)
 
     // MARK: Internal
 
@@ -32,11 +36,18 @@ enum ScheduleRequest: Request {
             return "lessons"
         case .classes:
             return "classes"
+        case .createSchedule:
+            return "schedule/create"
         }
     }
 
     var method: RequestMethod {
-        .get
+        switch self {
+        case .createSchedule:
+            return .post
+        default:
+            return .get
+        }
     }
 
     var mock: Data? {
@@ -71,6 +82,13 @@ enum ScheduleRequest: Request {
             return data
         case .classes:
             guard let path = Bundle.main.path(forResource: "classes", ofType: "json"),
+                  let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+            else {
+                return nil
+            }
+            return data
+        case .createSchedule:
+            guard let path = Bundle.main.path(forResource: "successResponse", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
             else {
                 return nil

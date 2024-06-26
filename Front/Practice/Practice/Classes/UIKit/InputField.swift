@@ -1,3 +1,7 @@
+//
+// Practice
+// Copyright © 2024 Vladislav Zhivaev. All rights reserved.
+//
 
 import AutoLayoutSugar
 import Foundation
@@ -27,6 +31,14 @@ final class InputField: UIView, InputFieldProtocol {
         super.init(coder: coder)
         setup()
     }
+
+    // MARK: Public
+
+    public lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     // MARK: Internal
 
@@ -84,12 +96,6 @@ final class InputField: UIView, InputFieldProtocol {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }()
-
-    public lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
     }()
 
     private lazy var errorLabel: UILabel = {
