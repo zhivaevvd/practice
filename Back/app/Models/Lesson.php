@@ -10,4 +10,6 @@ class Lesson extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $fillable = ['name', 'teacher_id'];
 }
