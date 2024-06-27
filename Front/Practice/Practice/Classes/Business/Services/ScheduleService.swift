@@ -9,11 +9,13 @@ import Foundation
 
 protocol ScheduleService: AnyObject {
     func getSchedule(for groupId: Int?, completion: ((Result<[Schedule], Error>) -> Void)?)
-    func getGroups(for teacherId: Int?, completion: ((Result<GroupsResponse, Error>) -> Void)?)
+    func getGroups(completion: ((Result<GroupsResponse, Error>) -> Void)?)
     func getTeachers(completion: ((Result<TeachersResponse, Error>) -> Void)?)
     func getLessons(for teacherId: Int?, completion: ((Result<LessonsResponse, Error>) -> Void)?)
     func getClasses(completion: ((Result<ClassesResponse, Error>) -> Void)?)
     func createSchedule(payload: CreateSchedulePayload, completion: ((Result<SuccessResponse, Error>) -> Void)?)
+    func editSchedule(scheduleId: Int, payload: CreateSchedulePayload, completion: ((Result<SuccessResponse, Error>) -> Void)?)
+    func deleteSchedule(id: Int, completion: ((Result<SuccessResponse, Error>) -> Void)?)
 }
 
 // MARK: - ScheduleServiceImpl
@@ -39,8 +41,8 @@ final class ScheduleServiceImpl: ScheduleService {
         }
     }
 
-    func getGroups(for teacherId: Int?, completion: ((Result<GroupsResponse, Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.getGroups(teacherId: teacherId)) { (result: Result<GroupsResponse, Error>) in
+    func getGroups(completion: ((Result<GroupsResponse, Error>) -> Void)?) {
+        networkProvider.mock(ScheduleRequest.getGroups) { (result: Result<GroupsResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)
@@ -85,6 +87,28 @@ final class ScheduleServiceImpl: ScheduleService {
 
     func createSchedule(payload: CreateSchedulePayload, completion: ((Result<SuccessResponse, Error>) -> Void)?) {
         networkProvider.mock(ScheduleRequest.createSchedule(payload: payload)) { (result: Result<SuccessResponse, Error>) in
+            switch result {
+            case .success:
+                completion?(result)
+            case let .failure(error):
+                completion?(Result.failure(error))
+            }
+        }
+    }
+    
+    func editSchedule(scheduleId: Int, payload: CreateSchedulePayload, completion: ((Result<SuccessResponse, Error>) -> Void)?) {
+        networkProvider.mock(ScheduleRequest.editSchedule(scheduleId: scheduleId, payload: payload)) { (result: Result<SuccessResponse, Error>) in
+            switch result {
+            case .success:
+                completion?(result)
+            case let .failure(error):
+                completion?(Result.failure(error))
+            }
+        }
+    }
+    
+    func deleteSchedule(id: Int, completion: ((Result<SuccessResponse, Error>) -> Void)?) {
+        networkProvider.mock(ScheduleRequest.deleteSchedule(scheduleId: id)) { (result: Result<SuccessResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)

@@ -21,10 +21,16 @@ final class PairView: UIView {
     }
 
     // MARK: Internal
+    
+    var scheduleEditAction: ((Schedule) -> Void)?
 
     var model: Schedule? {
         didSet {
-            guard let model else { return }
+            guard let model else {
+                editImageView.isHidden = true
+                return
+            }
+            editImageView.isHidden = !isEditable
             nameLabel.attributedText = buildTitleAndDescription(L10n.Schedule.lesson, model.lessonName)
             teacherLabel.attributedText = buildTitleAndDescription(L10n.Schedule.teacher, model.teacher.name + " " + model.teacher.surname)
             classLabel.attributedText = buildTitleAndDescription(L10n.Schedule.classroom, model.class.number)
@@ -37,6 +43,8 @@ final class PairView: UIView {
             pairNumberLabel.text = "\(String(pairNumber))."
         }
     }
+    
+    var isEditable: Bool = false
 
     // MARK: Private
 
@@ -77,6 +85,16 @@ final class PairView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private lazy var editImageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.image = UIImage(systemName: "pencil.circle")
+        view.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(editTapped))
+        view.addGestureRecognizer(tapGesture)
+        return view
+    }()
 
     private func configureSubviews() {
         pairNumberView.addSubview(pairNumberLabel)
@@ -84,6 +102,7 @@ final class PairView: UIView {
         pairView.addSubview(nameLabel)
         pairView.addSubview(teacherLabel)
         pairView.addSubview(classLabel)
+        pairView.addSubview(editImageView)
 
         pairView.layer.borderWidth = 1
         pairView.layer.borderColor = Asset.separator.color.cgColor
@@ -98,8 +117,9 @@ final class PairView: UIView {
         pairNumberLabel.top(8).left(16).right(8).bottom(8)
 
         nameLabel.top(8).left(16).right(16)
-        teacherLabel.top(to: .bottom(8), of: nameLabel).left(16).right(16)
-        classLabel.top(to: .bottom(8), of: teacherLabel).left(16).right(16).bottom(8)
+        teacherLabel.top(to: .bottom(8), of: nameLabel).left(16).right(to: .left(8), of: editImageView)
+        classLabel.top(to: .bottom(8), of: teacherLabel).left(16).right(to: .left(8), of: editImageView).bottom(8)
+        editImageView.centerY().right(16).width(20)
 
         pairNumberView.pin(excluding: .right)
         pairView.pin(excluding: .left).left(to: .right, of: pairNumberView)
@@ -112,5 +132,11 @@ final class PairView: UIView {
         attrString.addAttributes([.foregroundColor: Asset.navBlue.color], range: NSRange(location: 0, length: attrString.length))
         attrString.append(NSAttributedString(string: description))
         return attrString
+    }
+    
+    @objc
+    private func editTapped() {
+        guard let model = model else { return }
+        scheduleEditAction?(model)
     }
 }

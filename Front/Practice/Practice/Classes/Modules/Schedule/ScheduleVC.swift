@@ -11,21 +11,29 @@ import UIKit
 // MARK: - CatalogVC
 
 final class ScheduleVC: UIViewController {
+    
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: groupsButton)
+        groupsButton.isHidden = dataService.appState.user?.type == .student
         title = L10n.Schedule.title
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
         configTableView()
-        getSchedule()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         items = []
-        getSchedule()
+        if dataService.appState.user?.type != .student {
+            getGroups()
+            selectedGroup = groups.first
+            getSchedule(groupId: nil)
+        } else {
+            getSchedule(groupId: dataService.appState.user?.groupId)
+        }
     }
 
     // MARK: Internal
@@ -35,6 +43,14 @@ final class ScheduleVC: UIViewController {
     var service: ScheduleService?
 
     var snacker: Snacker?
+    
+    var groups: [Group] = []
+    
+    var selectedGroup: Group? {
+        didSet {
+            groupsButton.setTitle(selectedGroup?.number, for: .normal)
+        }
+    }
 
     var items: [Schedule] = [] {
         didSet {
@@ -61,14 +77,21 @@ final class ScheduleVC: UIViewController {
     func configTableView() {
         dataSource = UITableViewDiffableDataSource<SimpleDiffableSection, [Schedule]>(
             tableView: tableView,
-            cellProvider: { tableView, indexPath, model -> UITableViewCell? in
+            cellProvider: { [weak self] tableView, indexPath, model -> UITableViewCell? in
                 guard let cell = tableView.dequeueReusableCell(
                     withIdentifier: Self.scheduleCellReuseId,
                     for: indexPath
                 ) as? ScheduleCell else {
                     return nil
                 }
+                cell.isEditable = self?.dataService.appState.user?.type == .admin
                 cell.model = model
+                cell.scheduleEditAction = { schedule in
+                    guard let editScheduleController = VCFactory.buildCreateScheduleController(with: schedule) else {
+                        return
+                    }
+                    self?.navigationController?.pushViewController(editScheduleController, animated: true)
+                }
                 return cell
             }
         )
@@ -112,6 +135,18 @@ final class ScheduleVC: UIViewController {
         )
         return tableView
     }()
+    
+    private lazy var groupsButton: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.layer.cornerRadius = 10
+        btn.height(25).width(100)
+        btn.backgroundColor = .white
+        btn.setTitle("Группы", for: .normal)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        btn.addTarget(self, action: #selector(openGroupSelection), for: .touchUpInside)
+        return btn
+    }()
 
     private var isLoadingNextPage: Bool = false {
         didSet {
@@ -119,8 +154,9 @@ final class ScheduleVC: UIViewController {
         }
     }
 
-    private func getSchedule() {
-        service?.getSchedule(for: nil, completion: { [weak self] result in
+    private func getSchedule(groupId: Int?) {
+        let id = groupId ?? selectedGroup?.id
+        service?.getSchedule(for: id, completion: { [weak self] result in
             switch result {
             case let .success(items):
                 self?.items = items
@@ -128,5 +164,38 @@ final class ScheduleVC: UIViewController {
                 self?.snacker?.show(snack: L10n.Common.errorSimple, with: .error)
             }
         })
+    }
+    
+    private func getGroups() {
+        service?.getGroups(completion: { [weak self] result in
+            switch result {
+            case let .success(response):
+                self?.groups = response.groups
+            case .failure:
+                self?.snacker?.show(snack: L10n.Schedule.groupsError, with: .error)
+            }
+        })
+    }
+    
+    @objc
+    private func openGroupSelection() {
+        let sheet = SelectSheet()
+        sheet.selected = selectedGroup
+        sheet.model = groups
+        sheet.tapAction = { [weak self] item in
+            guard let group = item as? Group else {
+                return
+            }
+            
+            self?.presentedViewController?.dismiss(animated: true, completion: {
+                self?.selectedGroup = group
+                self?.items = []
+                self?.getSchedule(groupId: group.id)
+            })
+        }
+        
+        present(VCFactory.buildBottomSheetController(with: sheet, onEveryTapOut: {
+            self.presentedViewController?.dismiss(animated: true)
+        }), animated: true)
     }
 }

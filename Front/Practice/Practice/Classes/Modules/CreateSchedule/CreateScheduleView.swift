@@ -31,10 +31,11 @@ final class CreateScheduleView: UIView {
     var groupTapAction: ((Group?) -> Void)?
     var classTapAction: ((Class?) -> Void)?
     var dateTapAction: (() -> Void)?
-    var saveAction: ((CreateSchedulePayload) -> Void)?
+    var saveAction: ((CreateSchedule) -> Void)?
     var pairNumberAction: ((Int?) -> Void)?
+    var deleteAction: ((Int) -> Void)?
 
-    var model: CreateSchedulePayload {
+    var model: CreateSchedule {
         didSet {
             let teacherName = (model.teacher?.name ?? "") + " " + (model.teacher?.surname ?? "")
             teacherLabel.attributedText = buildTitleAndDescription(L10n.Schedule.teacher, teacherName)
@@ -64,6 +65,15 @@ final class CreateScheduleView: UIView {
     func setLessonsEnabled(_ enabled: Bool) {
         lessonView.isUserInteractionEnabled = enabled
         lessonView.alpha = enabled ? 1 : 0.5
+    }
+    
+    func setTeacherEnable(_ enabled: Bool) {
+        teacherView.isUserInteractionEnabled = enabled
+        teacherView.alpha = enabled ? 1 : 0.5
+    }
+    
+    func setDeleteButtonHidden(_ hidden: Bool) {
+        deleteButton.isHidden = hidden
     }
 
     // MARK: Private
@@ -209,7 +219,28 @@ final class CreateScheduleView: UIView {
         btn.backgroundColor = Asset.navBlue.color
         btn.titleLabel?.textColor = .white
         btn.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
+        btn.height(44)
         return btn
+    }()
+    
+    private lazy var deleteButton: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle(L10n.Action.deleteAction.uppercased(), for: .normal)
+        btn.layer.cornerRadius = 20
+        btn.backgroundColor = .red
+        btn.titleLabel?.textColor = .white
+        btn.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
+        btn.height(44)
+        return btn
+    }()
+    
+    private lazy var buttonsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 12
+        return stack
     }()
 
     private func configureSubviews() {
@@ -223,7 +254,8 @@ final class CreateScheduleView: UIView {
         containerStack.addArrangedSubviews([teacherView, lessonView, groupView, classView, dateView, pairNumberView])
 
         addSubview(containerStack)
-        addSubview(saveButton)
+        buttonsStack.addArrangedSubviews([saveButton, deleteButton])
+        addSubview(buttonsStack)
 
         [teacherView, lessonView, groupView, classView, dateView, pairNumberView].forEach { view in
             view.layer.borderWidth = 2
@@ -233,8 +265,8 @@ final class CreateScheduleView: UIView {
 
     private func makeConstraints() {
         containerStack.pin(excluding: .bottom)
-        saveButton.left().right().bottom(20).height(44)
-        saveButton.topAnchor.constraint(greaterThanOrEqualTo: containerStack.bottomAnchor, constant: 40).isActive = true
+        buttonsStack.left().right().bottom(20)
+        buttonsStack.topAnchor.constraint(greaterThanOrEqualTo: containerStack.bottomAnchor, constant: 40).isActive = true
 
         teacherLabel.pinToSuperview(with: .init(top: 20, left: 20, bottom: 20, right: 20))
         lessonLabel.pinToSuperview(with: .init(top: 20, left: 20, bottom: 20, right: 20))
@@ -291,5 +323,11 @@ private extension CreateScheduleView {
     @objc
     func pairTapped() {
         pairNumberAction?(model.pairNumber)
+    }
+    
+    @objc
+    func deleteTapped() {
+        guard let id = model.scheduleId else { return }
+        deleteAction?(id)
     }
 }

@@ -20,6 +20,8 @@ final class ScheduleCell: UITableViewCell {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    var scheduleEditAction: ((Schedule) -> Void)?
 
     // MARK: Internal
 
@@ -46,6 +48,8 @@ final class ScheduleCell: UITableViewCell {
             }
         }
     }
+    
+    var isEditable: Bool = false
 
     // MARK: Private
 
@@ -98,8 +102,12 @@ final class ScheduleCell: UITableViewCell {
     private func makeScheduleRow(_ schedule: Schedule? = nil, pairNumber: Int) -> UIView {
         let view = PairView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isEditable = isEditable
         view.model = schedule
         view.pairNumber = pairNumber
+        view.scheduleEditAction = { [weak self] schedule in
+            self?.scheduleEditAction?(schedule)
+        }
         return view
     }
 }
