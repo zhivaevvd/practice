@@ -7,11 +7,13 @@ import Foundation
 
 enum ScheduleRequest: Request {
     case getSchedule(groupId: Int?)
-    case getGroups(teacherId: Int?)
+    case getGroups
     case getTeachers
     case getLessons(teacherId: Int?)
     case classes
     case createSchedule(payload: CreateSchedulePayload)
+    case editSchedule(scheduleId: Int, payload: CreateSchedulePayload)
+    case deleteSchedule(scheduleId: Int)
 
     // MARK: Internal
 
@@ -22,10 +24,7 @@ enum ScheduleRequest: Request {
                 return "schedules/\(String(groupId))"
             }
             return "schedules"
-        case let .getGroups(teacherId):
-            if let teacherId = teacherId {
-                return "groups/\(teacherId)"
-            }
+        case .getGroups:
             return "groups"
         case .getTeachers:
             return "teachers"
@@ -38,6 +37,10 @@ enum ScheduleRequest: Request {
             return "classes"
         case .createSchedule:
             return "schedule/create"
+        case let .editSchedule(scheduleId, _):
+            return "schedule/\(scheduleId)"
+        case let .deleteSchedule(scheduleId):
+            return "schedule/\(scheduleId)"
         }
     }
 
@@ -45,8 +48,23 @@ enum ScheduleRequest: Request {
         switch self {
         case .createSchedule:
             return .post
+        case .editSchedule:
+            return .put
+        case .deleteSchedule:
+            return .delete
         default:
             return .get
+        }
+    }
+    
+    var body: Data? {
+        switch self {
+        case let .createSchedule(payload):
+            return RequestBuilderImpl.encode(payload)
+        case let .editSchedule(_, payload):
+            return RequestBuilderImpl.encode(payload)
+        default:
+            return nil
         }
     }
 
@@ -87,7 +105,7 @@ enum ScheduleRequest: Request {
                 return nil
             }
             return data
-        case .createSchedule:
+        case .createSchedule, .editSchedule, .deleteSchedule:
             guard let path = Bundle.main.path(forResource: "successResponse", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
             else {

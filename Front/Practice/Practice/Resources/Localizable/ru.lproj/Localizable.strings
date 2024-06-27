@@ -25,6 +25,7 @@
 "schedule.classesError" = "Не удалось загрузить аудитории";
 
 "createSchedule.title" = "Составить расписание";
+"createSchedule.editTitle" = "Изменить расписание";
 
 "action.back" = "Назад";
 "action.cancel" = "Отменить";

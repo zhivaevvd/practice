@@ -14,11 +14,19 @@ final class CreateScheduleVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = L10n.CreateSchedule.title
+        if editableSchedule == nil {
+            title = L10n.CreateSchedule.title
+        } else {
+            title = L10n.CreateSchedule.editTitle
+        }
+        
+        mainView.setDeleteButtonHidden(editableSchedule == nil)
+        
         navigationController?.navigationBar.prefersLargeTitles = false
 
         view.addSubview(mainView)
         mainView.safeArea { $0.pinToSuperview(with: .init(top: 40, left: 20, bottom: 0, right: 20)) }
+        
 
         configureActions()
     }
@@ -26,10 +34,29 @@ final class CreateScheduleVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mainView.setLessonsEnabled(false)
-
-        getTeachers()
+        
         getGroups()
         getClasses()
+        
+        if editableSchedule == nil {
+            getTeachers()
+        } else {
+            mainView.setTeacherEnable(false)
+            mainView.setLessonsEnabled(true)
+            getLessons(teacherId: editableSchedule?.teacher.id)
+            
+            let payload: CreateSchedule = .init(
+                teacher: editableSchedule?.teacher,
+                lesson: lessons.first(where: { $0.id == editableSchedule?.lessonId }),
+                class: editableSchedule?.class,
+                group: editableSchedule?.group,
+                date: editableSchedule?.date,
+                pairNumber: editableSchedule?.pairNumber,
+                scheduleId: editableSchedule?.scheduleId
+            )
+
+            mainView.model = payload
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -44,6 +71,8 @@ final class CreateScheduleVC: UIViewController {
     var snacker: Snacker?
 
     var dataService: DataService?
+    
+    var editableSchedule: Schedule?
 
     // MARK: Private
 
@@ -101,7 +130,7 @@ final class CreateScheduleVC: UIViewController {
     }
 
     private func getGroups() {
-        scheduleService?.getGroups(for: mainView.model.teacher?.id, completion: { [weak self] result in
+        scheduleService?.getGroups(completion: { [weak self] result in
             switch result {
             case let .success(response):
                 self?.groups = response.groups
@@ -122,30 +151,68 @@ final class CreateScheduleVC: UIViewController {
         })
     }
 
-    private func save(with payload: CreateSchedulePayload) {
+    private func saveSchedule(with payload: CreateSchedule) {
         guard mainView.model.validate() else {
             snacker?.show(snack: L10n.Common.fieldsError, with: .error)
             return
         }
 
-        scheduleService?.createSchedule(payload: payload, completion: { [weak self] result in
-            switch result {
-            case let .success(response):
-                if response.success {
-                    self?.snacker?.show(
-                        snack: L10n.Common.success,
-                        with: .init(textColor: .white, backgroundColor: .green, font: .systemFont(ofSize: 14))
-                    )
-                    self?.mainView.model.reset()
-                } else if let error = response.error {
-                    self?.snacker?.show(snack: error, with: .error)
-                } else {
-                    self?.snacker?.show(snack: L10n.Common.error, with: .error)
-                }
-            case let .failure(error):
-                self?.snacker?.show(snack: error.localizedDescription, with: .error)
+        let body: CreateSchedulePayload = CreateSchedulePayload(
+            teacherId: payload.teacher!.id,
+            classId: payload.class!.id,
+            groupId: payload.group!.id,
+            lessonId: payload.lesson!.id,
+            date: payload.date!,
+            pairNumber: payload.pairNumber!
+        )
+        
+        if editableSchedule == nil {
+            createSchedule(with: body)
+        } else {
+            guard let scheduleId = editableSchedule?.scheduleId else {
+                return
             }
+            editSchedule(with: body, and: scheduleId)
+        }
+    }
+    
+    private func deleteSchedule(id: Int) {
+        scheduleService?.deleteSchedule(id: id, completion: { [weak self] result in
+            self?.handleSuccessResult(result, forceModelReset: true)
         })
+    }
+    
+    private func createSchedule(with body: CreateSchedulePayload) {
+        scheduleService?.createSchedule(payload: body, completion: { [weak self] result in
+            self?.handleSuccessResult(result)
+        })
+    }
+    
+    private func editSchedule(with body: CreateSchedulePayload, and id: Int) {
+        scheduleService?.editSchedule(scheduleId: id, payload: body, completion: { [weak self] result in
+            self?.handleSuccessResult(result)
+        })
+    }
+    
+    private func handleSuccessResult(_ result: Result<SuccessResponse, Error>, forceModelReset: Bool = false) {
+        switch result {
+        case let .success(response):
+            if response.success {
+                snacker?.show(
+                    snack: L10n.Common.success,
+                    with: .init(textColor: .white, backgroundColor: .green, font: .systemFont(ofSize: 14))
+                )
+                if editableSchedule == nil || forceModelReset {
+                    mainView.model.reset()
+                }
+            } else if let error = response.error {
+                snacker?.show(snack: error, with: .error)
+            } else {
+                snacker?.show(snack: L10n.Common.error, with: .error)
+            }
+        case let .failure(error):
+            snacker?.show(snack: error.localizedDescription, with: .error)
+        }
     }
 
     private func configureActions() {
@@ -311,7 +378,11 @@ private extension CreateScheduleVC {
 
     func configureSaveAction() {
         mainView.saveAction = { [weak self] payload in
-            self?.save(with: payload)
+            self?.saveSchedule(with: payload)
+        }
+        
+        mainView.deleteAction = { [weak self] id in
+            self?.deleteSchedule(id: id)
         }
     }
 }

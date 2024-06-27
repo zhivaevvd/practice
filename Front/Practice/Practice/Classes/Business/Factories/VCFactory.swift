@@ -50,4 +50,16 @@ enum VCFactory {
         vc.transitioningDelegate = vc
         return vc
     }
+    
+    static func buildCreateScheduleController(with model: Schedule? = nil) -> UIViewController? {
+        guard let vc = StoryboardScene.CreateSchedule.initialScene.instantiate().viewControllers.first as? CreateScheduleVC else {
+            return nil
+        }
+        let scheduleService = CoreFactory.buildScheduleService()
+        vc.scheduleService = scheduleService
+        vc.snacker = CoreFactory.snacker
+        vc.dataService = CoreFactory.dataService
+        vc.editableSchedule = model
+        return vc
+    }
 }

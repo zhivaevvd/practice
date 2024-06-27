@@ -5,13 +5,14 @@
 
 import Foundation
 
-struct CreateSchedulePayload {
+struct CreateSchedule {
     var teacher: Teacher?
     var lesson: Lesson?
     var `class`: Class?
     var group: Group?
     var date: Date?
     var pairNumber: Int?
+    var scheduleId: Int?
 
     func validate() -> Bool {
         teacher != nil &&
@@ -28,5 +29,6 @@ struct CreateSchedulePayload {
         `class` = nil
         group = nil
         date = nil
+        pairNumber = nil
     }
 }
