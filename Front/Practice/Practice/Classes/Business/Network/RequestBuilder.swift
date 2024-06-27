@@ -61,7 +61,7 @@ final class RequestBuilderImpl: RequestBuilder {
     // MARK: Private
 
     private let dataService: DataService
-    private let apiURL: String = "localhost:3000"
+    private let apiURL: String = "localhost:8000/api"
 
     private func prefixHTTPs(_ url: String) -> String {
         let prefix = "http://"

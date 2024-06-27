@@ -11,9 +11,10 @@
 		140DF85E2C2C60880019D02A /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DF85D2C2C60880019D02A /* SuccessResponse.swift */; };
 		140DF8602C2C645A0019D02A /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DF85F2C2C645A0019D02A /* Pair.swift */; };
 		140EDC302C2C11F700AB196E /* CreateScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC2F2C2C11F700AB196E /* CreateScheduleView.swift */; };
-		140EDC322C2C126E00AB196E /* CreateSchedulePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC312C2C126E00AB196E /* CreateSchedulePayload.swift */; };
+		140EDC322C2C126E00AB196E /* CreateSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC312C2C126E00AB196E /* CreateSchedule.swift */; };
 		140EDC342C2C223D00AB196E /* Pickerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC332C2C223D00AB196E /* Pickerable.swift */; };
 		140EDC362C2C234300AB196E /* SelectSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EDC352C2C234300AB196E /* SelectSheet.swift */; };
+		14185FBA2C2D722B0010547F /* CreateSchedulePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14185FB92C2D722B0010547F /* CreateSchedulePayload.swift */; };
 		145D72212C2ACA25005CAC92 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D72202C2ACA25005CAC92 /* UIStackView+Extensions.swift */; };
 		145D72232C2AD30C005CAC92 /* PairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145D72222C2AD30C005CAC92 /* PairView.swift */; };
 		145D72262C2AEE8E005CAC92 /* OrderedDictionary in Frameworks */ = {isa = PBXBuildFile; productRef = 145D72252C2AEE8E005CAC92 /* OrderedDictionary */; };
@@ -114,9 +115,10 @@
 		140DF85D2C2C60880019D02A /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		140DF85F2C2C645A0019D02A /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
 		140EDC2F2C2C11F700AB196E /* CreateScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleView.swift; sourceTree = "<group>"; };
-		140EDC312C2C126E00AB196E /* CreateSchedulePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedulePayload.swift; sourceTree = "<group>"; };
+		140EDC312C2C126E00AB196E /* CreateSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedule.swift; sourceTree = "<group>"; };
 		140EDC332C2C223D00AB196E /* Pickerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickerable.swift; sourceTree = "<group>"; };
 		140EDC352C2C234300AB196E /* SelectSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSheet.swift; sourceTree = "<group>"; };
+		14185FB92C2D722B0010547F /* CreateSchedulePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedulePayload.swift; sourceTree = "<group>"; };
 		145D72202C2ACA25005CAC92 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		145D72222C2AD30C005CAC92 /* PairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairView.swift; sourceTree = "<group>"; };
 		145ECD192C2AC03E00D0F8B3 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -301,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				C21E134727045BAF00867E2E /* Profile */,
-				C21E134627045BA900867E2E /* CreateScheduleVC */,
+				C21E134627045BA900867E2E /* CreateSchedule */,
 				C21E134527045B9D00867E2E /* Schedule */,
 				C21E134427045B9300867E2E /* TabBar */,
 				C21E134327045B8B00867E2E /* Auth */,
@@ -380,15 +382,16 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
-		C21E134627045BA900867E2E /* CreateScheduleVC */ = {
+		C21E134627045BA900867E2E /* CreateSchedule */ = {
 			isa = PBXGroup;
 			children = (
 				C214165F270DBD1000C40071 /* CreateScheduleVC.swift */,
 				140EDC2F2C2C11F700AB196E /* CreateScheduleView.swift */,
-				140EDC312C2C126E00AB196E /* CreateSchedulePayload.swift */,
+				140EDC312C2C126E00AB196E /* CreateSchedule.swift */,
 				140EDC352C2C234300AB196E /* SelectSheet.swift */,
+				14185FB92C2D722B0010547F /* CreateSchedulePayload.swift */,
 			);
-			path = CreateScheduleVC;
+			path = CreateSchedule;
 			sourceTree = "<group>";
 		};
 		C21E134727045BAF00867E2E /* Profile */ = {
@@ -742,7 +745,7 @@
 				14C2CD022C2B1B8A00211BDD /* Lesson.swift in Sources */,
 				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
-				140EDC322C2C126E00AB196E /* CreateSchedulePayload.swift in Sources */,
+				140EDC322C2C126E00AB196E /* CreateSchedule.swift in Sources */,
 				C239CB6827205AA6003ABBB0 /* UILoadable+UIView.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
 				B5B15487273008C700C92082 /* PresentationController.swift in Sources */,
@@ -756,6 +759,7 @@
 				B5B154812730088900C92082 /* BottomSheetStyle.swift in Sources */,
 				C2D720A22704869900C40EA5 /* UserRequest.swift in Sources */,
 				C2B96D43270DD9A50012D0E8 /* SnackCustomView.swift in Sources */,
+				14185FBA2C2D722B0010547F /* CreateSchedulePayload.swift in Sources */,
 				B5B1547F2730087C00C92082 /* UIPanGestureRecognizer+Direction.swift in Sources */,
 				14C2CD082C2B1D8500211BDD /* ClassesResponse.swift in Sources */,
 				5E74DC9F682F7103E6003DD3 /* InputField.swift in Sources */,

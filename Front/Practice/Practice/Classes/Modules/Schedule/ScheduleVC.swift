@@ -48,7 +48,7 @@ final class ScheduleVC: UIViewController {
     
     var selectedGroup: Group? {
         didSet {
-            groupsButton.setTitle(selectedGroup?.number, for: .normal)
+            groupsButton.setTitle(selectedGroup?.name, for: .normal)
         }
     }
 
