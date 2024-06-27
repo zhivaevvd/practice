@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'schedules'], function () {
     Route::get('/{groupId}', [\App\Http\Controllers\ScheduleController::class, 'getByGroupId']);
+    Route::post('/create', [\App\Http\Controllers\ScheduleController::class, 'store']);
+    Route::put('/{schedule}', [\App\Http\Controllers\ScheduleController::class, 'update']);
+    Route::delete('/{schedule}', [\App\Http\Controllers\ScheduleController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'person'], function () {
@@ -33,3 +36,9 @@ Route::group(['prefix' => 'classes'], function () {
 Route::group(['prefix' => 'lessons'], function () {
     Route::get('/{teacherId}', [\App\Http\Controllers\LessonController::class, 'getByTeacherId']);
 });
+
+Route::group(['prefix' => 'groups'], function () {
+    Route::get('/', [\App\Http\Controllers\GroupController::class, 'index']);
+});
+
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
