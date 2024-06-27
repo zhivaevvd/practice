@@ -18,15 +18,13 @@ class ScheduleController extends Controller
         $response = [];
 
         foreach ($schedules as $schedule) {
-            $teacher = Person::find($schedule->teacher_id);
-
             $response[] = [
                 'lessonId' => $schedule->lesson_id,
                 'lessonName' => Lesson::find($schedule->lesson_id)->name,
                 'date' => $schedule->date,
-                'teacher' => "{$teacher->name} {$teacher->surname}",
-                'group' => Group::find($schedule->group_id)->name,
-                'class' => Audience::find($schedule->class_id)->number,
+                'teacher' => Person::find($schedule->teacher_id),
+                'group' => Group::find($schedule->group_id),
+                'class' => Audience::find($schedule->class_id),
                 'scheduleId' => $schedule->id,
                 'pairNumber' => $schedule->pair_number,
             ];

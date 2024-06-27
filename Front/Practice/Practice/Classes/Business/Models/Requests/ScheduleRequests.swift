@@ -36,11 +36,11 @@ enum ScheduleRequest: Request {
         case .classes:
             return "classes"
         case .createSchedule:
-            return "schedule/create"
+            return "schedules/create"
         case let .editSchedule(scheduleId, _):
-            return "schedule/\(scheduleId)"
+            return "schedules/\(scheduleId)"
         case let .deleteSchedule(scheduleId):
-            return "schedule/\(scheduleId)"
+            return "schedules/\(scheduleId)"
         }
     }
 

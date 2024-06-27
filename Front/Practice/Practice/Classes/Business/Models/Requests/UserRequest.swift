@@ -14,7 +14,7 @@ enum UserRequest: Request {
     var path: String {
         switch self {
         case let .login(user: user, password: password):
-            return "login/\(user)&\(password)"
+            return "login"
         case let .getProfile(id: id):
             return "person/\(id)"
         }
@@ -23,14 +23,20 @@ enum UserRequest: Request {
     var method: RequestMethod {
         switch self {
         case .login:
-            return .get
+            return .post
         case .getProfile:
             return .get
         }
     }
 
     var body: Data? {
-        nil
+        switch self {
+        case let .login(user, password):
+            let payload = AuthPayload(login: user, password: password)
+            return RequestBuilderImpl.encode(payload)
+        default:
+            return nil
+        }
     }
 
     var mock: Data? {

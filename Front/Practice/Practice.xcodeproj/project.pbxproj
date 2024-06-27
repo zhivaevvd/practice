@@ -24,6 +24,7 @@
 		145ECD202C2AC0DA00D0F8B3 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145ECD1F2C2AC0DA00D0F8B3 /* Class.swift */; };
 		145ECD222C2AC1C900D0F8B3 /* schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 145ECD212C2AC1C900D0F8B3 /* schedule.json */; };
 		145ECD242C2AC4AE00D0F8B3 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145ECD232C2AC4AE00D0F8B3 /* ScheduleCell.swift */; };
+		14ADC2702C2DC53E0042FEBD /* AuthPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADC26F2C2DC53E0042FEBD /* AuthPayload.swift */; };
 		14C2CCFA2C2B17A300211BDD /* groups.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C2CCF92C2B17A300211BDD /* groups.json */; };
 		14C2CCFC2C2B188200211BDD /* GroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */; };
 		14C2CCFE2C2B198500211BDD /* teachers.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C2CCFD2C2B198500211BDD /* teachers.json */; };
@@ -127,6 +128,7 @@
 		145ECD1F2C2AC0DA00D0F8B3 /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		145ECD212C2AC1C900D0F8B3 /* schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schedule.json; sourceTree = "<group>"; };
 		145ECD232C2AC4AE00D0F8B3 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		14ADC26F2C2DC53E0042FEBD /* AuthPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPayload.swift; sourceTree = "<group>"; };
 		14C2CCF92C2B17A300211BDD /* groups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = groups.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		14C2CCFB2C2B188200211BDD /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
 		14C2CCFD2C2B198500211BDD /* teachers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teachers.json; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				14C2CD012C2B1B8A00211BDD /* Lesson.swift */,
 				140EDC332C2C223D00AB196E /* Pickerable.swift */,
 				140DF85F2C2C645A0019D02A /* Pair.swift */,
+				14ADC26F2C2DC53E0042FEBD /* AuthPayload.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				C21E13552704619D00867E2E /* CoreFactory.swift in Sources */,
 				C21E13202704510C00867E2E /* AppDelegate.swift in Sources */,
 				140EDC302C2C11F700AB196E /* CreateScheduleView.swift in Sources */,
+				14ADC2702C2DC53E0042FEBD /* AuthPayload.swift in Sources */,
 				145ECD1A2C2AC03E00D0F8B3 /* Schedule.swift in Sources */,
 				C21E13592704647900867E2E /* Errors.swift in Sources */,
 				C2D720A727048AF000C40EA5 /* AuthResponse.swift in Sources */,

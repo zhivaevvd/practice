@@ -46,6 +46,7 @@ class ProfileVC: UIViewController {
 
             UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
             self.dataService?.appState.accessToken = nil
+            self.dataService?.appState.user = nil
         })
         alert.addAction(UIAlertAction(title: L10n.Action.cancel, style: .cancel) { (_: UIAlertAction) -> Void in
         })

@@ -74,6 +74,8 @@ final class AuthVC: UIViewController {
     private var snacker: Snacker?
 
     private var authService: AuthService?
+    
+    private var profileService: ProfileService = CoreFactory.buildProfileService()
 
     private let dataService: DataService = CoreFactory.dataService
 

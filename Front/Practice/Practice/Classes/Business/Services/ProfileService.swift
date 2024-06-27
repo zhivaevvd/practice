@@ -24,12 +24,12 @@ final class ProfileServiceImpl: ProfileService {
     // MARK: Internal
 
     func getProfile(completion: ((Result<Profile, Error>) -> Void)?) {
-//        guard let userId = Int(dataService.appState.accessToken ?? "") else {
-//            return
-//        }
-//
-        networkProvider.mock(
-            UserRequest.getProfile(id: 1),
+        guard let userId = Int(dataService.appState.accessToken ?? "") else {
+            return
+        }
+
+        networkProvider.make(
+            UserRequest.getProfile(id: userId),
             completion: { (result: Result<Profile, Error>) in
                 switch result {
                 case let .success(data):
@@ -38,7 +38,7 @@ final class ProfileServiceImpl: ProfileService {
                     completion?(Result.failure(error))
                 }
             },
-            keyDecodingStrategy: .useDefaultKeys
+            keyDecodingStrategy: .convertFromSnakeCase
         )
     }
 

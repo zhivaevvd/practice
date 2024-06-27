@@ -31,7 +31,7 @@ final class ScheduleServiceImpl: ScheduleService {
     // MARK: Internal
 
     func getSchedule(for groupId: Int?, completion: ((Result<[Schedule], Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.getSchedule(groupId: groupId)) { (result: Result<[Schedule], Error>) in
+        networkProvider.make(ScheduleRequest.getSchedule(groupId: groupId)) { (result: Result<[Schedule], Error>) in
             switch result {
             case .success:
                 completion?(result)
@@ -53,7 +53,7 @@ final class ScheduleServiceImpl: ScheduleService {
     }
 
     func getTeachers(completion: ((Result<TeachersResponse, Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.getTeachers) { (result: Result<TeachersResponse, Error>) in
+        networkProvider.make(ScheduleRequest.getTeachers) { (result: Result<TeachersResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)
@@ -64,7 +64,7 @@ final class ScheduleServiceImpl: ScheduleService {
     }
 
     func getLessons(for teacherId: Int?, completion: ((Result<LessonsResponse, Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.getLessons(teacherId: teacherId)) { (result: Result<LessonsResponse, Error>) in
+        networkProvider.make(ScheduleRequest.getLessons(teacherId: teacherId)) { (result: Result<LessonsResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)
@@ -75,7 +75,7 @@ final class ScheduleServiceImpl: ScheduleService {
     }
 
     func getClasses(completion: ((Result<ClassesResponse, Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.classes) { (result: Result<ClassesResponse, Error>) in
+        networkProvider.make(ScheduleRequest.classes) { (result: Result<ClassesResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)
@@ -86,7 +86,7 @@ final class ScheduleServiceImpl: ScheduleService {
     }
 
     func createSchedule(payload: CreateSchedulePayload, completion: ((Result<SuccessResponse, Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.createSchedule(payload: payload)) { (result: Result<SuccessResponse, Error>) in
+        networkProvider.make(ScheduleRequest.createSchedule(payload: payload)) { (result: Result<SuccessResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)
@@ -97,7 +97,7 @@ final class ScheduleServiceImpl: ScheduleService {
     }
     
     func editSchedule(scheduleId: Int, payload: CreateSchedulePayload, completion: ((Result<SuccessResponse, Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.editSchedule(scheduleId: scheduleId, payload: payload)) { (result: Result<SuccessResponse, Error>) in
+        networkProvider.make(ScheduleRequest.editSchedule(scheduleId: scheduleId, payload: payload)) { (result: Result<SuccessResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)
@@ -108,7 +108,7 @@ final class ScheduleServiceImpl: ScheduleService {
     }
     
     func deleteSchedule(id: Int, completion: ((Result<SuccessResponse, Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.deleteSchedule(scheduleId: id)) { (result: Result<SuccessResponse, Error>) in
+        networkProvider.make(ScheduleRequest.deleteSchedule(scheduleId: id)) { (result: Result<SuccessResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)

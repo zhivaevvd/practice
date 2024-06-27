@@ -35,6 +35,7 @@ Route::group(['prefix' => 'classes'], function () {
 
 Route::group(['prefix' => 'lessons'], function () {
     Route::get('/{teacherId}', [\App\Http\Controllers\LessonController::class, 'getByTeacherId']);
+    Route::get('/', [\App\Http\Controllers\LessonController::class, 'index']);
 });
 
 Route::group(['prefix' => 'groups'], function () {

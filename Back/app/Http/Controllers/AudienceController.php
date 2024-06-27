@@ -9,6 +9,6 @@ class AudienceController extends Controller
 {
     public function index()
     {
-        return response()->json(Audience::all());
+        return response()->json(['classes' => Audience::all()]);
     }
 }
