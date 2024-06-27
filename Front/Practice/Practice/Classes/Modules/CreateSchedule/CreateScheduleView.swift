@@ -40,7 +40,7 @@ final class CreateScheduleView: UIView {
             let teacherName = (model.teacher?.name ?? "") + " " + (model.teacher?.surname ?? "")
             teacherLabel.attributedText = buildTitleAndDescription(L10n.Schedule.teacher, teacherName)
             lessonLabel.attributedText = buildTitleAndDescription(L10n.Schedule.lesson, model.lesson?.name ?? "")
-            classLabel.attributedText = buildTitleAndDescription(L10n.Schedule.classroom, model.class?.number ?? "")
+            classLabel.attributedText = buildTitleAndDescription(L10n.Schedule.classroom, model.class?.pickerText ?? "")
             groupLabel.attributedText = buildTitleAndDescription(L10n.Schedule.group, model.group?.name ?? "")
 
             if let pairNumber = model.pairNumber {

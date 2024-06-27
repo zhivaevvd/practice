@@ -42,7 +42,7 @@ final class ScheduleServiceImpl: ScheduleService {
     }
 
     func getGroups(completion: ((Result<GroupsResponse, Error>) -> Void)?) {
-        networkProvider.mock(ScheduleRequest.getGroups) { (result: Result<GroupsResponse, Error>) in
+        networkProvider.make(ScheduleRequest.getGroups) { (result: Result<GroupsResponse, Error>) in
             switch result {
             case .success:
                 completion?(result)
