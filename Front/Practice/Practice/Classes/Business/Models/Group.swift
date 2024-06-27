@@ -7,9 +7,9 @@ import Foundation
 
 struct Group: Decodable, Hashable, Pickerable {
     let id: Int
-    let number: String
+    let name: String
 
     var pickerText: String {
-        number
+        name
     }
 }

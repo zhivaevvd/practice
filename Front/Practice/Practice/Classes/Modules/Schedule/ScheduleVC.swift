@@ -20,17 +20,52 @@ final class ScheduleVC: UIViewController {
         groupsButton.isHidden = dataService.appState.user?.type == .student
         title = L10n.Schedule.title
         view.addSubview(tableView)
+        view.addSubview(emptyLabel)
         tableView.top().left().right().bottom()
+        emptyLabel.center()
         configTableView()
+        
+        profileService.getProfile { [weak self] result in
+            switch result {
+            case let .success(profile):
+                if profile.type != .student {
+                    self?.getGroups()
+                    if profile.type == .teacher {
+                        DispatchQueue.main.async {
+                            guard var controllers = self?.tabBarController?.viewControllers else {
+                                return
+                            }
+
+                            controllers.remove(at: 1)
+                            self?.tabBarController?.viewControllers = controllers
+                        }
+                    }
+                } else {
+                    self?.selectedGroup = nil
+                    self?.getSchedule(groupId: profile.groupId)
+                    DispatchQueue.main.async {
+                        self?.groupsButton.isHidden = true
+                        
+                        guard var controllers = self?.tabBarController?.viewControllers else {
+                            return
+                        }
+
+                        controllers.remove(at: 1)
+                        self?.tabBarController?.viewControllers = controllers
+                    }
+                }
+            default:
+                break
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         items = []
-        if dataService.appState.user?.type != .student {
+
+        if profile?.type != .student {
             getGroups()
-            selectedGroup = groups.first
-            getSchedule(groupId: nil)
         } else {
             getSchedule(groupId: dataService.appState.user?.groupId)
         }
@@ -48,13 +83,22 @@ final class ScheduleVC: UIViewController {
     
     var selectedGroup: Group? {
         didSet {
-            groupsButton.setTitle(selectedGroup?.number, for: .normal)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                groupsButton.setTitle(selectedGroup?.name, for: .normal)
+                if let id = selectedGroup?.id {
+                    getSchedule(groupId: id)
+                }
+            }
         }
     }
 
     var items: [Schedule] = [] {
         didSet {
-            snapshot(groupItemsByDate(items))
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.snapshot(self.groupItemsByDate(items))
+            }
         }
     }
 
@@ -124,6 +168,10 @@ final class ScheduleVC: UIViewController {
     private var dataSource: UITableViewDiffableDataSource<SimpleDiffableSection, [Schedule]>?
 
     private let dataService = CoreFactory.dataService
+    
+    private var profileService = CoreFactory.buildProfileService()
+    
+    private var profile: Profile?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -147,6 +195,15 @@ final class ScheduleVC: UIViewController {
         btn.addTarget(self, action: #selector(openGroupSelection), for: .touchUpInside)
         return btn
     }()
+    
+    private lazy var emptyLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Пустое расписание"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.textColor = Asset.textSecondary.color
+        return label
+    }()
 
     private var isLoadingNextPage: Bool = false {
         didSet {
@@ -160,6 +217,9 @@ final class ScheduleVC: UIViewController {
             switch result {
             case let .success(items):
                 self?.items = items
+                DispatchQueue.main.async {
+                    self?.emptyLabel.isHidden = !items.isEmpty
+                }
             case .failure:
                 self?.snacker?.show(snack: L10n.Common.errorSimple, with: .error)
             }
@@ -170,7 +230,10 @@ final class ScheduleVC: UIViewController {
         service?.getGroups(completion: { [weak self] result in
             switch result {
             case let .success(response):
-                self?.groups = response.groups
+                DispatchQueue.main.async {
+                    self?.groups = response.groups
+                    self?.selectedGroup = response.groups.first
+                }
             case .failure:
                 self?.snacker?.show(snack: L10n.Schedule.groupsError, with: .error)
             }

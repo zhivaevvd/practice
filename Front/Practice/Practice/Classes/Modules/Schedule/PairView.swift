@@ -33,7 +33,7 @@ final class PairView: UIView {
             editImageView.isHidden = !isEditable
             nameLabel.attributedText = buildTitleAndDescription(L10n.Schedule.lesson, model.lessonName)
             teacherLabel.attributedText = buildTitleAndDescription(L10n.Schedule.teacher, model.teacher.name + " " + model.teacher.surname)
-            classLabel.attributedText = buildTitleAndDescription(L10n.Schedule.classroom, model.class.number)
+            classLabel.attributedText = buildTitleAndDescription(L10n.Schedule.classroom, model.class.pickerText)
         }
     }
 

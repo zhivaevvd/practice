@@ -184,7 +184,9 @@ final class CreateScheduleVC: UIViewController {
     
     private func createSchedule(with body: CreateSchedulePayload) {
         scheduleService?.createSchedule(payload: body, completion: { [weak self] result in
-            self?.handleSuccessResult(result)
+            DispatchQueue.main.async {
+                self?.handleSuccessResult(result)
+            }
         })
     }
     
