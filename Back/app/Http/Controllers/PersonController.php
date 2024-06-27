@@ -16,6 +16,6 @@ class PersonController extends Controller
     {
         $teachers = Person::where('type', 'teacher')->get();
 
-        return response()->json($teachers);
+        return response()->json(['teachers' => $teachers]);
     }
 }
