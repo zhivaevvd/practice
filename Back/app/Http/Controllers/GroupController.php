@@ -9,6 +9,6 @@ class GroupController extends Controller
 {
     public function index()
     {
-        return response()->json(Group::all());
+        return response()->json(['groups' => Group::all()]);
     }
 }
